@@ -1,0 +1,5 @@
+title = "Rozjíždíme nový web"
+content = "<h2>Je to strašně super!</h2>"
+author = "Martin Kišš"
+date = "17. dubna 2019"
+created = "2019-04-17"

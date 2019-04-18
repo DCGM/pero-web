@@ -1,0 +1,46 @@
+h1 img{
+    height: 120px;
+    margin-bottom: 80px;
+    clear: both;
+}
+
+h1 {
+    display: inline-block;
+}
+
+.main-content {
+    padding-bottom: 5%;
+}
+
+.emph-black {
+    color: black;
+    font-weight: bold;
+}
+
+.emph-white {
+    color: white;
+    font-weight: bold;
+}
+
+.site-heading {
+    padding: 120px 0 !important;
+}
+
+#mainNav .navbar-nav>li.nav-item>a {
+    font-size: 16px !important;
+}
+
+.post-heading > .post-meta {
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 0;
+    color: whitesmoke;
+}
+
+.dotted-link {
+    border-bottom: 1px dotted;
+}
+
+.dotted-link:focus, .dotted-link:hover {
+    text-decoration: none;
+  }

@@ -1,0 +1,13 @@
+<div class="post-preview">
+  <a href="{{ property['link'] }}">
+    <h2 class="post-title">
+      {{ property["title"] }}
+    </h2>
+    {% if property["subtitle"] is defined and property["subtitle"] is not none %}
+       <span class="subheading">{{ property["subtitle"] }}</span>
+    {% endif %}
+  </a>
+  {% if property["author"] is defined and property["author"] is not none and property["date"] is defined and property["date"] is not none %}
+    <p class="post-meta">Autor: <span class="emph-black">{{ property["author"] }}</span>, {{ property["date"] }}</p>
+  {% endif %}
+</div>
