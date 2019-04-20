@@ -1,4 +1,4 @@
-title = "Tento web dokáže uvařit i čaj a kávu"
+title = "Tento web dokáže uvařit čaj i kávu"
 subtitle = "Čaj však jen černý a kávu pouze instantní."
 author = "Martin Kišš"
 date = "18. dubna 2019"
