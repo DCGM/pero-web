@@ -27,6 +27,18 @@ def posts():
     return helper.show_page("all_posts", content=content)
 
 
+@app.route('/datasets')
+def datasets():
+    content = {"page_title": "Projekt PERO - Datové sady"}
+    return helper.show_page("datasets", content=content)
+
+
+@app.route('/get_handwritten_page')
+def get_handwritten_page():
+    path = "/home/ikiss/Documents/Datasets/books_czech/1000/images/"
+    return helper.send_file(helper.get_random_file(path), as_attachment=True)
+
+
 @app.route("/post/<name>")
 def show_post(name):
     content = {}

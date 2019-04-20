@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<h2>Handwritten dataset</h2>
+
+<p>
+    Zde si můžete stáhnout a následně nahrát stránku textu, který ručně přepíšete.
+</p>
+
+<!--<p>-->
+<!--  <form action="">-->
+<!--    <input type="button" value="Získat stránku" onclick="window.location.href='/get_handwritten_page'"/>-->
+<!--  </form>-->
+<!--</p>-->
+
+<a href="/get_handwritten_page">Get page</a>
+
+<p>
+  <form action = "/upload_handwritten_page" method = "POST" enctype = "multipart/form-data">
+    <input type = "file" name = "file" />
+    <input type = "submit" value="Nahrát stránku"/>
+  </form>
+</p>
