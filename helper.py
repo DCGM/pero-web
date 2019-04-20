@@ -1,8 +1,14 @@
+import re
 import os
 import sys
+import random
+
 sys.path.append("posts")
 
-from flask import render_template
+from flask import render_template, send_file
+
+
+CONTENT_FILE_PATTERN = "^\[[a-zA-Z0-9\s_\\.\-\(\):]+(\.html)\]$"
 
 
 def get_value(config, attribute, default=None):
@@ -26,6 +32,23 @@ def fill_defaults(context):
     fill_default(context, "show_project_name", True)
 
 
+def get_random_file(dir_path):
+    print(random.randint(0,10))
+
+    files = os.listdir(dir_path)
+    return os.path.join(dir_path, files[random.randint(0, len(files) - 1)])
+
+
+def load_content_file(name):
+    path = "static/content/{name}".format(name=name[1:-1])
+    content = "Nebylo možné nalézt soubor {path}".format(path=path)
+    if os.path.isfile(path):
+        with open(path, "r") as f:
+            content = f.read()
+
+    return content
+
+
 def show_page(page, content=None, fill_page_title=False):
     post = __import__(page)
 
@@ -37,6 +60,9 @@ def show_page(page, content=None, fill_page_title=False):
 
     if fill_page_title:
         content["page_title"] = "Projekt PERO - {post_name}".format(post_name=content["title"])
+
+    if re.match(CONTENT_FILE_PATTERN, content["content"]) is not None:
+        content["content"] = load_content_file(content["content"])
 
     return render_template('template.html', property=content)
 
