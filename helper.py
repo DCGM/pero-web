@@ -2,13 +2,14 @@ import re
 import os
 import sys
 import random
+import hashlib
+import datetime
+from flask import render_template, send_file
+from werkzeug.utils import secure_filename
 
 sys.path.append("posts")
 
-from flask import render_template, send_file
-
-
-CONTENT_FILE_PATTERN = "^\[[a-zA-Z0-9\s_\\.\-\(\):]+(\.html)\]$"
+CONTENT_FILE_PATTERN = r"^\[[a-zA-Z0-9\s_\\.\-\(\):]+(\.html)\]$"
 
 
 def get_value(config, attribute, default=None):
@@ -32,11 +33,45 @@ def fill_defaults(context):
     fill_default(context, "show_project_name", True)
 
 
-def get_random_file(dir_path):
-    print(random.randint(0,10))
+def get_random_file(dir_path, random_number, extensions):
+    files = [f for f in os.listdir(dir_path) if f.lower().endswith(extensions)]
+    file = files[random_number % len(files)]
+    return os.path.join(dir_path, file)
 
-    files = os.listdir(dir_path)
-    return os.path.join(dir_path, files[random.randint(0, len(files) - 1)])
+
+def enrich_filename(filename):
+    suffix = hashlib.sha512((str(datetime.datetime.now()) + str(random.randint(0, sys.maxsize))).encode()).hexdigest()
+    parts = filename.split(".")
+
+    parts.insert(len(parts) - 1, suffix)
+    result = ".".join(parts)
+
+    return result
+
+
+def is_allowed(file, extensions):
+    if str(file.filename).lower().endswith(extensions):
+        return True
+
+    return False
+
+
+def create_dirs(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+
+def save_files(request, input_name, path, extensions):
+    create_dirs(path)
+
+    if input_name in request.files:
+        files = request.files.getlist(input_name)
+
+        for file in files:
+            if file.filename != '' and is_allowed(file, extensions):
+                filename = secure_filename(file.filename)
+                filename = enrich_filename(filename)
+                file.save(os.path.join(path, filename))
 
 
 def load_content_file(name):
@@ -68,7 +103,8 @@ def show_page(page, content=None, fill_page_title=False):
 
 
 def get_posts(path="posts"):
-    return [os.path.splitext(f)[0] for f in os.listdir(path) if f != os.path.basename(__file__) and f != "README.txt" and not f.startswith("__")]
+    return [os.path.splitext(f)[0] for f in os.listdir(path) if
+            f != os.path.basename(__file__) and f != "README.txt" and not f.startswith("__")]
 
 
 def sort_posts(posts):
@@ -97,4 +133,3 @@ def get_posts_preview(posts):
         previews.append(preview)
 
     return "<hr>".join(previews)
-

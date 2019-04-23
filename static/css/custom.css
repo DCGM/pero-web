@@ -43,4 +43,20 @@ h1 {
 
 .dotted-link:focus, .dotted-link:hover {
     text-decoration: none;
-  }
+}
+
+.pero-form {
+    font-size: 1rem;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.pero-span-button {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}

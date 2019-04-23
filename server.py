@@ -1,6 +1,7 @@
+import os
 import helper
 
-from flask import Flask
+from flask import Flask, request, redirect
 app = Flask(__name__, template_folder='templates')
 
 
@@ -27,6 +28,30 @@ def posts():
     return helper.show_page("all_posts", content=content)
 
 
+@app.route('/datasets')
+def datasets():
+    content = {"page_title": "Projekt PERO - Datové sady"}
+    return helper.show_page("datasets", content=content)
+
+
+@app.route('/get_handwritten_page', methods=['GET'])
+def get_handwritten_page():
+    random = int(request.args.get('random'))
+    path = "/mnt/matylda1/hradis/PERO/brno_hwr_dataset/texts/"
+    extensions = ("jpg", "png", "pdf")
+    return helper.send_file(helper.get_random_file(path, random, extensions), as_attachment=True)
+
+
+@app.route('/upload_handwritten_pages', methods=['GET', 'POST'])
+def upload_handwritten_pages():
+    input_name = "uploaded-files"
+    path = "/tmp/flask_upload/"
+    extensions = ("jpg", "png", "pdf")
+
+    helper.save_files(request, input_name, path, extensions)
+    return redirect("/datasets")
+
+
 @app.route("/post/<name>")
 def show_post(name):
     content = {}
@@ -34,7 +59,7 @@ def show_post(name):
 
 
 if __name__ == '__main__':
-    host = '0.0.0.0'
+    host = '127.0.0.1'
     port = 8080
     debug = False
 
