@@ -1,8 +1,11 @@
+import os
 import helper
 import numpy as np
 
-from flask import Flask, request
+from flask import Flask, flash, request, redirect, url_for
+from werkzeug.utils import secure_filename
 app = Flask(__name__, template_folder='templates')
+app.config["UPLOAD_FOLDER"] = "/tmp/flask_upload"
 
 
 @app.route('/')
@@ -37,8 +40,25 @@ def datasets():
 @app.route('/get_handwritten_page', methods=['GET'])
 def get_handwritten_page():
     random = int(request.args.get('random'))
-    path = "/mnt/c/Users/kissm/Desktop/srbsko/"
-    return helper.send_file(helper.get_random_file(path, random), as_attachment=True)
+    path = "/mnt/matylda1/hradis/PERO/brno_hwr_dataset/texts/"
+    extensions = ("jpg", "png", "pdf")
+    return helper.send_file(helper.get_random_file(path, random, extensions), as_attachment=True)
+
+
+@app.route('/upload_handwritten_pages', methods=['GET', 'POST'])
+def upload_handwritten_pages():
+    input_name = "uploaded-files"
+
+    if input_name in request.files:
+        files = request.files.getlist(input_name)
+
+        for file in files:
+            if file.filename != '':
+                filename = secure_filename(file.filename)
+                filename = helper.enrich_filename(filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+    return redirect("/datasets")
 
 
 @app.route("/post/<name>")

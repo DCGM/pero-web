@@ -2,6 +2,8 @@ import re
 import os
 import sys
 import random
+import hashlib
+import datetime
 from flask import render_template, send_file
 
 sys.path.append("posts")
@@ -30,10 +32,20 @@ def fill_defaults(context):
     fill_default(context, "show_project_name", True)
 
 
-def get_random_file(dir_path, random_number):
-    files = os.listdir(dir_path)
+def get_random_file(dir_path, random_number, extensions):
+    files = [f for f in os.listdir(dir_path) if f.lower().endswith(extensions)]
     file = files[random_number % len(files)]
     return os.path.join(dir_path, file)
+
+
+def enrich_filename(filename):
+    suffix = hashlib.sha512((str(datetime.datetime.now()) + str(random.randint(0, sys.maxsize))).encode()).hexdigest()
+    parts = filename.split(".")
+
+    parts.insert(len(parts) - 1, suffix)
+    result = ".".join(parts)
+
+    return result
 
 
 def load_content_file(name):
