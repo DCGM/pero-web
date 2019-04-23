@@ -5,6 +5,7 @@ import random
 import hashlib
 import datetime
 from flask import render_template, send_file
+from werkzeug.utils import secure_filename
 
 sys.path.append("posts")
 
@@ -46,6 +47,31 @@ def enrich_filename(filename):
     result = ".".join(parts)
 
     return result
+
+
+def is_allowed(file, extensions):
+    if str(file.filename).lower().endswith(extensions):
+        return True
+
+    return False
+
+
+def create_dirs(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+
+def save_files(request, input_name, path, extensions):
+    create_dirs(path)
+
+    if input_name in request.files:
+        files = request.files.getlist(input_name)
+
+        for file in files:
+            if file.filename != '' and is_allowed(file, extensions):
+                filename = secure_filename(file.filename)
+                filename = enrich_filename(filename)
+                file.save(os.path.join(path, filename))
 
 
 def load_content_file(name):
