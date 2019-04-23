@@ -2,13 +2,11 @@ import re
 import os
 import sys
 import random
+from flask import render_template, send_file
 
 sys.path.append("posts")
 
-from flask import render_template, send_file
-
-
-CONTENT_FILE_PATTERN = "^\[[a-zA-Z0-9\s_\\.\-\(\):]+(\.html)\]$"
+CONTENT_FILE_PATTERN = r"^\[[a-zA-Z0-9\s_\\.\-\(\):]+(\.html)\]$"
 
 
 def get_value(config, attribute, default=None):
@@ -32,11 +30,10 @@ def fill_defaults(context):
     fill_default(context, "show_project_name", True)
 
 
-def get_random_file(dir_path):
-    print(random.randint(0,10))
-
+def get_random_file(dir_path, random_number):
     files = os.listdir(dir_path)
-    return os.path.join(dir_path, files[random.randint(0, len(files) - 1)])
+    file = files[random_number % len(files)]
+    return os.path.join(dir_path, file)
 
 
 def load_content_file(name):
@@ -68,7 +65,8 @@ def show_page(page, content=None, fill_page_title=False):
 
 
 def get_posts(path="posts"):
-    return [os.path.splitext(f)[0] for f in os.listdir(path) if f != os.path.basename(__file__) and f != "README.txt" and not f.startswith("__")]
+    return [os.path.splitext(f)[0] for f in os.listdir(path) if
+            f != os.path.basename(__file__) and f != "README.txt" and not f.startswith("__")]
 
 
 def sort_posts(posts):
@@ -97,4 +95,3 @@ def get_posts_preview(posts):
         previews.append(preview)
 
     return "<hr>".join(previews)
-

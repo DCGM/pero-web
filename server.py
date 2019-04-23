@@ -1,6 +1,7 @@
 import helper
+import numpy as np
 
-from flask import Flask
+from flask import Flask, request
 app = Flask(__name__, template_folder='templates')
 
 
@@ -33,10 +34,11 @@ def datasets():
     return helper.show_page("datasets", content=content)
 
 
-@app.route('/get_handwritten_page')
+@app.route('/get_handwritten_page', methods=['GET'])
 def get_handwritten_page():
-    path = "/home/ikiss/Documents/Datasets/books_czech/1000/images/"
-    return helper.send_file(helper.get_random_file(path), as_attachment=True)
+    random = int(request.args.get('random'))
+    path = "/mnt/c/Users/kissm/Desktop/srbsko/"
+    return helper.send_file(helper.get_random_file(path, random), as_attachment=True)
 
 
 @app.route("/post/<name>")
@@ -46,7 +48,7 @@ def show_post(name):
 
 
 if __name__ == '__main__':
-    host = '0.0.0.0'
+    host = '127.0.0.1'
     port = 8080
     debug = False
 

@@ -1,20 +1,17 @@
 <h2>Handwritten dataset</h2>
 
 <p>
-    Zde si můžete stáhnout a následně nahrát stránku textu, který ručně přepíšete.
+    Zde si můžete stáhnout a následně nahrát stránku textu pro ruční přepis.
 </p>
 
-<!--<p>-->
-<!--  <form action="">-->
-<!--    <input type="button" value="Získat stránku" onclick="window.location.href='/get_handwritten_page'"/>-->
-<!--  </form>-->
-<!--</p>-->
+<div class="input-default-wrapper mt-5">
 
-<a href="/get_handwritten_page">Get page</a>
+  <input type="file" id="file-with-multi-file" class="input-default-js" data-multiple-target="Vybrány {target} soubory" multiple>
 
-<p>
-  <form action = "/upload_handwritten_page" method = "POST" enctype = "multipart/form-data">
-    <input type = "file" name = "file" />
-    <input type = "submit" value="Nahrát stránku"/>
-  </form>
-</p>
+  <label class="label-for-default-js rounded-right mb-3" for="file-with-multi-file">
+      <div class="float-left span-browse">Procházet</div>
+      <span class="span-choose-file">Vyberte soubor</span>
+  </label>
+
+  <span class="input-group-text mb-3" id="input2">Nahrát</span>
+</div>
