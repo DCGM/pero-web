@@ -1,8 +1,18 @@
-import os
 import helper
+import argparse
+import config_helper
 
 from flask import Flask, request, redirect
 app = Flask(__name__, template_folder='templates')
+
+configuration = None
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-c', '--config-file', required=True, help='Path to configuration file.')
+    args = parser.parse_args()
+    return args
 
 
 @app.route('/')
@@ -37,16 +47,16 @@ def datasets():
 @app.route('/get_handwritten_page', methods=['GET'])
 def get_handwritten_page():
     random = int(request.args.get('random'))
-    path = "/mnt/matylda1/hradis/PERO/brno_hwr_dataset/texts/"
-    extensions = ("jpg", "png", "pdf")
+    path = configuration["handwritten_dataset"]["source_directory"]
+    extensions = configuration["handwritten_dataset"]["source_extensions"]
     return helper.send_file(helper.get_random_file(path, random, extensions), as_attachment=True)
 
 
 @app.route('/upload_handwritten_pages', methods=['GET', 'POST'])
 def upload_handwritten_pages():
     input_name = "uploaded-files"
-    path = "/tmp/flask_upload/"
-    extensions = ("jpg", "png", "pdf")
+    path = configuration["handwritten_dataset"]["target_directory"]
+    extensions = configuration["handwritten_dataset"]["target_extensions"]
 
     helper.save_files(request, input_name, path, extensions)
     return redirect("/datasets")
@@ -58,9 +68,17 @@ def show_post(name):
     return helper.show_page(name, content=content, fill_page_title=True)
 
 
-if __name__ == '__main__':
-    host = '127.0.0.1'
-    port = 8080
-    debug = False
+def main():
+    args = parse_args()
 
+    global configuration
+    configuration = config_helper.parse_configuration(args.config_file)
+
+    host = configuration["common"]["host"]
+    port = configuration["common"]["port"]
+    debug = configuration["common"]["debug"]
     app.run(host=host, port=port, debug=debug)
+
+
+if __name__ == '__main__':
+    main()
