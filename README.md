@@ -4,6 +4,8 @@ Spuštění serveru:
 
 ```python3 server.py --config-file=config.ini```
 
+Aby byl server přístupný z Internetu, pak je nutné změnit v konfiguračním souboru adresu na ```0.0.0.0```.
+
 ## Adresářová struktura
 
 ```posts```
