@@ -20,7 +20,7 @@ Adresář pro různé šablony. Aktuálně je zde šablona pro celou stránku a 
 
 ```Další soubory```
 
-Dále jsou zde také soubory, které definují stránky, které by nejsou příspěvky, ale jsou v nich informace týkající se projektu (např. stránka s odkazy na anotační servery, apod.). Toto jsou opět soubory s příponou ```.py```, které mají obdobnou strukturu strukturu, avšak je možné některé informace vypustit.
+Dále jsou zde také soubory, jenž definují stránky, které nejsou příspěvky, ale jsou v nich informace týkající se projektu (např. stránka s odkazy na anotační servery, apod.). Toto jsou opět soubory s příponou ```.py```, které mají obdobnou strukturu jako příspěvky, avšak je možné některé informace vypustit.
 
 ## Jak a kam psát příspěvky
 
@@ -36,4 +36,4 @@ content = "Obsah příspěvku"
 
 Obdobně je pak možné doplnit nepovinné atributy, aktuálně ```subtitle``` (podtitulek příspěvku).
 
-V rámci ```title```, ```author```, ```date``` i ```content``` je možné použít libovolných html tagů. Pro jednodušší zápis je také možné definovat obsah v samostatném souboru pomocí html značek. Tento soubor (např. ```obsah_prispevku.html```) je pak potřeba umístit do adresáře ```static/content/``` a odkázat se na něj v rámci atributu ```content = "[obsah_prispevku.html]"```
+V rámci ```title```, ```author```, ```date``` i ```content``` je možné použít libovolných html tagů. Pro jednodušší zápis je také možné definovat obsah v samostatném souboru pomocí html značek. Tento soubor (např. ```obsah_prispevku.html```) je pak potřeba umístit do adresáře ```static/content/``` a odkázat se na něj v rámci atributu ```content = "[obsah_prispevku.html]"```.
