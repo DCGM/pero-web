@@ -74,11 +74,11 @@ def sort_posts(posts):
 def get_posts_preview(limit=3, sort=True):
     posts = get_all_posts()
 
-    if limit is not None:
-        posts = posts[:limit]
-
     if sort:
         posts = sort_posts(posts)
+
+    if limit is not None:
+        posts = posts[:limit]
 
     return render_posts_preview(posts)
 
