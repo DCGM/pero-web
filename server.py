@@ -1,11 +1,21 @@
 import helper
 import argparse
 import config_helper
+import flask
+import os
 
-from flask import Flask, request, redirect
-app = Flask(__name__, template_folder='templates')
+from flask import Flask, request, redirect, render_template_string
+app = Flask(__name__)
 
 configuration = None
+
+from jinja2 import Environment, FileSystemLoader
+
+file_loader = FileSystemLoader(
+        [os.path.join(os.path.dirname(__file__), "templates"),
+         os.path.join(os.path.dirname(__file__), "posts"),
+         os.path.join(os.path.dirname(__file__), "")])
+env = Environment(loader=file_loader)
 
 
 def parse_args():
@@ -17,39 +27,39 @@ def parse_args():
 
 @app.route('/')
 def index():
-    return helper.show_page("index")
+    posts = helper.get_posts_preview()
+
+    template = env.get_template("static/index.html")
+    return template.render({'new_posts': posts})
 
 
 @app.route('/about')
 def about():
-    content = {"page_title": "Projekt PERO - O projektu"}
-    return helper.show_page("about", content=content)
+    return helper.show_page("static/about.html")
 
 
 @app.route('/annotation_servers')
 def servers():
-    content = {"page_title": "Projekt PERO - Anotační servery"}
-    return helper.show_page("servers", content=content)
+    return helper.show_page("static/annotation_servers.html")
 
 
 @app.route('/posts')
 def posts():
-    content = {"page_title": "Projekt PERO - Všechny příspěvky"}
-    return helper.show_page("all_posts", content=content)
+    posts = helper.get_posts_preview(limit=None)
+    template = env.get_template("static/posts.html")
+    return template.render({'all_posts': posts})
 
 
 @app.route('/datasets')
 def datasets():
-    content = {"page_title": "Projekt PERO - Datové sady"}
-    return helper.show_page("datasets", content=content)
+    return helper.show_page("static/datasets.html")
 
 
 @app.route('/get_handwritten_page', methods=['GET'])
 def get_handwritten_page():
-    random = int(request.args.get('random'))
     path = configuration["handwritten_dataset"]["source_directory"]
     extensions = configuration["handwritten_dataset"]["source_extensions"]
-    return helper.send_file(helper.get_random_file(path, random, extensions), as_attachment=True)
+    return helper.send_file(helper.get_random_file(path, extensions), as_attachment=True)
 
 
 @app.route('/upload_handwritten_pages', methods=['GET', 'POST'])
@@ -64,8 +74,7 @@ def upload_handwritten_pages():
 
 @app.route("/post/<name>")
 def show_post(name):
-    content = {}
-    return helper.show_page(name, content=content, fill_page_title=True)
+    return helper.show_page(name + ".html")
 
 
 def main():
