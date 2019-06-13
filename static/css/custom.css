@@ -1,6 +1,6 @@
 h1 img{
     height: 120px;
-    margin-bottom: 80px;
+    margin-top: -80px;
     clear: both;
 }
 
@@ -27,7 +27,7 @@ h2 {
 }
 
 .site-heading {
-    padding: 120px 0 !important;
+    padding: 100px 0 60px 0 !important;
 }
 
 #mainNav .navbar-nav>li.nav-item>a {
