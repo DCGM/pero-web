@@ -1,6 +1,0 @@
-title = "Zvýšili jsme přesnost OCR!"
-subtitle = "Naše rozpoznávače nyní dosahují úspěšnosti 110 %."
-author = "Martin Kišš"
-date = "31. února 2020"
-created = "2020-02-31"
-content = "Takhle dobrá OCRka ještě nikdy nikdo neměl."

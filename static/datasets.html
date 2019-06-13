@@ -1,0 +1,28 @@
+{% extends 'template.html' %}
+
+{% block header %}
+  Datové sady
+{% endblock %}
+
+{% block content %}
+    <h2>Ručně psaný dataset</h2>
+
+    <p>
+        Zde si můžete stáhnout a následně nahrát stránku textu pro ruční přepis.
+    </p>
+
+    <form id="handwritten_dataset_form" action="/upload_handwritten_pages" method="POST" enctype="multipart/form-data">
+        <div class="input-default-wrapper mt-5 pero-form">
+            <span class="input-group-text mb-3 pero-span-button" id="input1" onclick="getRandomHandwrittenPage()">Získat stránku</span>
+            <input type="file" id="file-with-multi-file" name="uploaded-files" class="input-default-js"
+                   data-multiple-target="Počet souborů: {target}"
+                   multiple>
+            <label class="label-for-default-js rounded-right rounded-left mb-3" for="file-with-multi-file">
+                <span class="span-choose-file">Vybrat stránku</span>
+                <div class="float-left span-browse">Procházet</div>
+            </label>
+            <span class="input-group-text mb-3 pero-span-button" id="input2"
+                  onclick="uploadHandwrittenPages()">Nahrát stránku</span>
+        </div>
+    </form>
+{% endblock %}

@@ -1,5 +1,0 @@
-title = "Zahájení projektu PERO"
-author = "Michal Hradiš"
-date = "1. ledna 2018"
-created = "2018-01-01"
-content = "Náš projekt byl právě zahájen. Juchůů!"
