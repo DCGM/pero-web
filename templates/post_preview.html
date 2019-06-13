@@ -1,8 +1,13 @@
 <div class="post-preview">
   <a href="{{ link }}">
-    <h3 class="post-title">
+    <h4 class="post-title">
       {% block header %}{% endblock %}
-    </h3>
-    {% block perex %}{% endblock %}
+    </h4>
+      <div class="post-preview-text">
+        {% block perex %}{% endblock %}
+        {% block content %}{% endblock %}
+
+        <div class="post-preview-shadow"></div>
+      </div>
   </a>
 </div>

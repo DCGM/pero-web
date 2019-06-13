@@ -67,11 +67,18 @@ def show_page(page, content=None):
     return template.render(context=content)
 
 
-def get_posts_preview(limit=3):
+def sort_posts(posts):
+    return sorted(posts, reverse=True)
+
+
+def get_posts_preview(limit=3, sort=True):
     posts = get_all_posts()
 
     if limit is not None:
         posts = posts[:limit]
+
+    if sort:
+        posts = sort_posts(posts)
 
     return render_posts_preview(posts)
 

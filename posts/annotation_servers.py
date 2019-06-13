@@ -1,6 +1,0 @@
-title = "Anotační servery"
-subtitle = "Máme k dispozici online nástroje pro ruční anotaci dokumentů."
-author = "Martin Kišš"
-date = "18. dubna 2019"
-created = "2019-04-18"
-content = "V rámci projektu jsme implementovali <a class='dotted-link' href='/annotation_servers'>anotační servery</a>, které slouží k ručnímu přepisování dokumentů."
