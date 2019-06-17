@@ -16,7 +16,7 @@ file_loader = FileSystemLoader(
 env = Environment(loader=file_loader)
 
 
-POST_FILE_PATTERN = "\d{4}\-\d{2}-\d{2}_[A-Za-z0-9_]+\.html"
+POST_FILE_PATTERN = "\d{4}\-\d{2}-\d{2}_[\S\s]+\.html"
 
 
 def get_random_file(dir_path, extensions):
