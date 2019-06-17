@@ -4,11 +4,19 @@
     display: none;
 }
 
-#bmod_upload_form {
+#hwr_upload_form {
     margin-bottom: 5%;
 }
 
-#bmod_upload_button {
+#hwr_get_button {
+    cursor: pointer !important;
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 20px;
+}
+
+#hwr_upload_button {
     cursor: pointer !important;
     margin-left: 3%;
     font-size: 20px;
@@ -20,12 +28,11 @@
     cursor: pointer !important;
 }
 
-#bmod_upload_label {
-    border-top-right-radius: 0.25rem !important;
-    border-bottom-right-radius: 0.25rem !important;
+#hwr_upload_label {
+    border-radius: 0.25rem !important;
 }
 
-#bmod_upload_form_no_file_message {
+#hwr_upload_form_no_file_message {
     display: none;
     text-align: center;
 }

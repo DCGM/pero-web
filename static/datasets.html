@@ -1,28 +1,18 @@
 {% extends 'template.html' %}
 
 {% block header %}
-  Datové sady
+  Data sets
 {% endblock %}
 
 {% block content %}
-    <h2>Ručně psaný dataset</h2>
+<p>Within the Project PERO, different text recognition datasets are created that are further published. Below you can find links to already available sets.</p>
 
-    <p>
-        Zde si můžete stáhnout a následně nahrát stránku textu pro ruční přepis.
-    </p>
+<h2><a href="/handwritten_dataset">Handwritten dataset</a></h2>
+<p>We are currently getting handwritten pages of text, which we will further analyze and process for the purpose of recognizing such documents.</p>
+<a href="/handwritten_dataset" class="dotted-link">More</a>
+<p></p>
 
-    <form id="handwritten_dataset_form" action="/upload_handwritten_pages" method="POST" enctype="multipart/form-data">
-        <div class="input-default-wrapper mt-5 pero-form">
-            <span class="input-group-text mb-3 pero-span-button" id="input1" onclick="getRandomHandwrittenPage()">Získat stránku</span>
-            <input type="file" id="file-with-multi-file" name="uploaded-files" class="input-default-js"
-                   data-multiple-target="Počet souborů: {target}"
-                   multiple>
-            <label class="label-for-default-js rounded-right rounded-left mb-3" for="file-with-multi-file">
-                <span class="span-choose-file">Vybrat stránku</span>
-                <div class="float-left span-browse">Procházet</div>
-            </label>
-            <span class="input-group-text mb-3 pero-span-button" id="input2"
-                  onclick="uploadHandwrittenPages()">Nahrát stránku</span>
-        </div>
-    </form>
+<h2><a href="/brno_mobile_ocr_dataset">Brno Mobile OCR Dataset</a></h2>
+<p>The Brno Mobile OCR Dataset is focused primarily on developing methods for recognizing low quality texts. The dataset contains full pages as well as individual lines with transcripts with varying levels of noise, blur and similar effects.</p>
+<a href="/brno_mobile_ocr_dataset" class="dotted-link">More</a>
 {% endblock %}

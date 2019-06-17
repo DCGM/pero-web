@@ -12,6 +12,10 @@ h2 {
     font-size: 3rem !important;
 }
 
+p {
+    text-align: justify;
+}
+
 .main-content {
     padding-bottom: 5%;
 }
@@ -98,4 +102,3 @@ h2 {
 #all-posts-btn {
     margin-top: 2rem;
 }
-
