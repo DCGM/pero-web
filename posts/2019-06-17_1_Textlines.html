@@ -17,6 +17,7 @@
         information without overshooting into neighbouring textlines. Knowing these parameters, a full textline bounding box can
         be easily computed. This is especially suitable when working with the standard
         <a href="https://www.primaresearch.org/schema/PAGE/gts/pagecontent/2016-07-15/Simple%20PAGE%20XML%20Example.pdf">PAGE XML format</a>.
+    </p>
     <img class="img-fluid" src="/static/img/textline_lines.png" alt="To extract a document textline, suitable representation has to be be chosen"/>
     <p>
         To efficiently predict these values for an input document page, we employ a convolutional neural network with encoder-decoder architecture.
@@ -34,6 +35,7 @@
         In some cases where the page has been bent before being scanned or when hand-written textline is crooked, simple cropping of the bounding
         box leads to images that contain more than one textline and are therefore unsuitable for OCR methods. Therefore, in such cases,
         textline unfolding is performed as an additional post-processing step. This elastically transforms the image using normals of the detected baseline.
+    </p>
     <img class="img-fluid" src="/static/img/textline_unfolding.png" alt="Detected textline may need to be unfolded before cropping"/>
     <p>
       Thus, even sub-optimally scanned document pages with challenging layout and variety of different fonts and headings can be fully automatically parsed
