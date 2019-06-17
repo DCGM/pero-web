@@ -4,6 +4,10 @@ import sys
 import random
 import hashlib
 import datetime
+
+from typing import Optional
+from bmod.result import Result, Status
+
 from flask import render_template, send_file
 from werkzeug.utils import secure_filename
 
@@ -62,13 +66,26 @@ def save_files(request, input_name, path, extensions):
                 file.save(os.path.join(path, filename))
 
 
-def show_page(page, content=None):
+def show_page(page, *args, **kwargs):
     template = env.get_template(page)
-    return template.render(context=content)
+    return template.render(*args, **kwargs)
 
 
 def sort_posts(posts):
     return sorted(posts, reverse=True)
+
+
+def get_bmod_page(result: Optional[Result] = None, path="static/brno_mobile_ocr_dataset.html", ):
+    if result is not None:
+        if result.status == Status.SUCCESS:
+            eval_data = result.data
+            output = show_page(path, success=True, id=eval_data.id, cer=eval_data.cer, wer=eval_data.wer, message=result.message)
+        else:
+            output = show_page(path, success=False, message=result.message)
+    else:
+        output = show_page(path)
+
+    return output
 
 
 def get_posts_preview(limit=3, sort=True):

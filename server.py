@@ -5,6 +5,8 @@ import flask
 import os
 
 from flask import Flask, request, redirect, render_template_string
+from bmod import helper as bmod_helper
+from bmod.result import  Result, Status
 app = Flask(__name__)
 
 configuration = None
@@ -50,9 +52,36 @@ def posts():
     return template.render({'all_posts': posts})
 
 
+@app.route('/publications')
+def publications():
+    return helper.show_page("static/publications.html")
+
+
 @app.route('/datasets')
 def datasets():
     return helper.show_page("static/datasets.html")
+
+
+@app.route('/handwritten_dataset')
+def handwritten_dataset():
+    return helper.show_page("static/handwritten_dataset.html")
+
+
+@app.route('/brno_mobile_ocr_dataset', methods=['GET', 'POST'])
+def brno_mobile_ocr_dataset():
+    if request.method == 'POST':
+        file_path = bmod_helper.save_file(request, "bmod_uploaded_transcription_file", configuration["brno_mobile_ocr_dataset"]["upload_path"])
+
+        if file_path is not None:
+            result = bmod_helper.evaluate(file_path, configuration["brno_mobile_ocr_dataset"]["ground_truth_path"])
+        else:
+            result = Result(Status.FAILURE, None, "Could not save file from the request.")
+
+        output = helper.get_bmod_page(result)
+    else:
+        output = helper.get_bmod_page()
+
+    return output
 
 
 @app.route('/get_handwritten_page', methods=['GET'])
