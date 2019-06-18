@@ -6,13 +6,21 @@
 
 {% block content %}
     <p>
-        Here you can download and then upload a text page for manual transcription.
+        By rewriting the following text you will contribute to the development of automatic transcription of Czech historical documents.
+        Our goal is to make it possible to search online for example in the contents of chronicles, registry and
+        land books and historical correspondence. Please, rewrite the printed text anywhere on the obtained
+        page with preserved linefeeding and errors. By completing this sheet you agree to its publication and free use for any purpose.
+        Underneath the form you can see example of one completed page.
+    </p>
+    <p>
+        Please scan the completed sheets of paper using the desk scanner and upload it by the form below or send it to: ihradis@fit.vutbr.cz with subject "Brno HWR dataset".
+        Alternatively, send the completed letter to: Michal Hradiš, Faculty of Information Technology, BUT, Božetěchova 1/2, 612 66 Brno.
     </p>
 
     <form id="handwritten_dataset_form" action="/upload_handwritten_pages" method="POST" enctype="multipart/form-data">
         <div class="input-default-wrapper mt-5">
             <div class="input-group">
-                <div class="input-group-text mb-3" id="hwr_get_button" onclick="getRandomHandwrittenPage()">Get page</div>
+                <div class="input-group-text mb-3" id="hwr_get_button" onclick="getRandomHandwrittenPage()">Get document</div>
             </div>
 
             <div class="input-group">
@@ -24,6 +32,12 @@
                 <span class="input-group-text" id="hwr_upload_button" onclick="uploadHandwrittenPages()">Upload</span>
             </div>
         </div>
+
+        <p>
+            <a href="/static/img/hwr_example.jpg" target="_blank">
+                <img class="img-fluid" src="/static/img/hwr_example.jpg" alt="Example of transcribed page."/>
+            </a>
+        </p>
 
     </form>
 {% endblock %}
