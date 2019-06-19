@@ -62,11 +62,6 @@ def datasets():
     return helper.show_page("static/datasets.html")
 
 
-@app.route('/handwritten_dataset')
-def handwritten_dataset():
-    return helper.show_page("static/handwritten_dataset.html")
-
-
 @app.route('/brno_mobile_ocr_dataset', methods=['GET', 'POST'])
 def brno_mobile_ocr_dataset():
     if request.method == 'POST':
@@ -91,14 +86,30 @@ def get_handwritten_page():
     return helper.send_file(helper.get_random_file(path, extensions), as_attachment=True)
 
 
-@app.route('/upload_handwritten_pages', methods=['GET', 'POST'])
+@app.route('/handwritten_dataset', methods=['GET', 'POST'])
 def upload_handwritten_pages():
-    input_name = "uploaded-files"
-    path = configuration["handwritten_dataset"]["target_directory"]
-    extensions = configuration["handwritten_dataset"]["target_extensions"]
+    if request.method == 'POST':
+        input_name = "hwr_uploaded_files"
 
-    helper.save_files(request, input_name, path, extensions)
-    return redirect("/datasets")
+        try:
+            path = configuration["handwritten_dataset"]["target_directory"]
+            extensions = configuration["handwritten_dataset"]["target_extensions"]
+            configuration_success = True
+        except:
+            result = Result(Status.FAILURE, None, "There is a problem with server configuration.")
+            configuration_success = False
+
+        if configuration_success:
+            try:
+                result = helper.save_files(request, input_name, path, extensions)
+            except:
+                result = Result(Status.FAILURE, None, "There was a problem saving your file(s).")
+
+        output = helper.get_hwr_page(result)
+    else:
+        output = helper.get_hwr_page()
+
+    return output
 
 
 @app.route("/post/<name>")

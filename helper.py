@@ -56,6 +56,8 @@ def create_dirs(path):
 def save_files(request, input_name, path, extensions):
     create_dirs(path)
 
+    success = True
+
     if input_name in request.files:
         files = request.files.getlist(input_name)
 
@@ -63,7 +65,21 @@ def save_files(request, input_name, path, extensions):
             if file.filename != '' and is_allowed(file, extensions):
                 filename = secure_filename(file.filename)
                 filename = enrich_filename(filename)
-                file.save(os.path.join(path, filename))
+
+                file_path = os.path.join(path, filename)
+
+                file.save(file_path)
+                if not os.path.exists(file_path):
+                    success = False
+
+    if success:
+        status = Status.SUCCESS
+        message = "File(s) successfully saved. Thank you for participating."
+    else:
+        status = Status.FAILURE
+        message = "There was a problem saving your file(s)."
+
+    return Result(status, None, message)
 
 
 def show_page(page, *args, **kwargs):
@@ -80,6 +96,18 @@ def get_bmod_page(result: Optional[Result] = None, path="static/brno_mobile_ocr_
         if result.status == Status.SUCCESS:
             eval_data = result.data
             output = show_page(path, success=True, id=eval_data.id, cer=eval_data.cer, wer=eval_data.wer, message=result.message)
+        else:
+            output = show_page(path, success=False, message=result.message)
+    else:
+        output = show_page(path)
+
+    return output
+
+
+def get_hwr_page(result: Optional[Result] = None, path="static/handwritten_dataset.html"):
+    if result is not None:
+        if result.status == Status.SUCCESS:
+            output = show_page(path, success=True, message=result.message)
         else:
             output = show_page(path, success=False, message=result.message)
     else:
