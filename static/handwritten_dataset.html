@@ -17,7 +17,7 @@
         Alternatively, send the completed letter to: Michal Hradiš, Faculty of Information Technology, BUT, Božetěchova 1/2, 612 66 Brno.
     </p>
 
-    <form id="handwritten_dataset_form" action="/upload_handwritten_pages" method="POST" enctype="multipart/form-data">
+    <form id="handwritten_dataset_form" action="/handwritten_dataset" method="POST" enctype="multipart/form-data">
         <div class="input-default-wrapper mt-5">
             <div class="input-group">
                 <div class="input-group-text mb-3" id="hwr_get_button" onclick="getRandomHandwrittenPage()">Get document</div>
@@ -25,19 +25,40 @@
 
             <div class="input-group">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="bmod_uploaded_transcription_file" id="hwr_upload_file_input" aria-describedby="hwr_upload_file_input">
+                    <input type="file" class="custom-file-input" name="hwr_uploaded_files" id="hwr_upload_file_input" aria-describedby="hwr_upload_file_input" multiple>
                     <label class="custom-file-label" id="hwr_upload_label" for="hwr_upload_file_input">Choose file</label>
                 </div>
 
                 <span class="input-group-text" id="hwr_upload_button" onclick="uploadHandwrittenPages()">Upload</span>
             </div>
         </div>
-
-        <p>
-            <a href="/static/img/hwr_example.jpg" target="_blank">
-                <img class="img-fluid" src="/static/img/hwr_example.jpg" alt="Example of transcribed page."/>
-            </a>
-        </p>
-
     </form>
+
+    <div id="error_block" {% if success is not defined or success == true %} class="hidden" {% endif %}>
+        <p id="hwr_upload_form_no_file_message">Please, select a file.</p>
+        {% if success is defined and success == false %}
+            {% if message is defined and message|length > 0 %}
+                <p>{{ message }}</p>
+            {% else %}
+                <p>Something unexpectedly failed. Please, report this to ikiss@fit.vutbr.cz.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div id="success_block" {% if success is not defined or success == false %} class="hidden" {% endif %}>
+        {% if success is defined and success == true %}
+            {% if message is defined and message|length > 0 %}
+                <p>{{ message }}</p>
+            {% else %}
+                <p>File(s) successfully saved. Thank you for participating.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <p>
+        <a href="/static/img/hwr_example.jpg" target="_blank">
+            <img class="img-fluid" src="/static/img/hwr_example.jpg" alt="Example of transcribed page."/>
+        </a>
+    </p>
+
 {% endblock %}
