@@ -16,10 +16,6 @@ p {
     text-align: justify;
 }
 
-.main-content {
-    padding-bottom: 5%;
-}
-
 .emph-black {
     color: black;
     font-weight: bold;
@@ -101,4 +97,33 @@ p {
 
 #all-posts-btn {
     margin-top: 2rem;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#page-content {
+    padding-bottom: 11rem;
+}
+
+footer {
+    clear: both;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0;
+    max-height: 7rem;
+    background-color: #efefef;
+    text-align: center;
+    -webkit-box-shadow: inset 0px 100px 32px -100px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 100px 32px -100px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 100px 32px -100px rgba(0,0,0,0.75);
+}
+
+footer img {
+    height: 2.5rem;
+    margin: 2.5% 2% 3% 2%;
 }

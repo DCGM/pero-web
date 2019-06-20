@@ -34,7 +34,7 @@
 </head>
 
 <body>
-
+<div id="page-container">
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -78,23 +78,47 @@
     </div>
   </header>
 
-  <!-- Main Content -->
-  <div class="container main-content">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <p>
-          <b>
-            {% block perex %}{% endblock %}
-          </b>
-        </p>
+  <div id="page-content">
+    <!-- Main Content -->
+    <div class="container main-content">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>
+            <b>
+              {% block perex %}{% endblock %}
+            </b>
+          </p>
 
-        {% block content %}{% endblock %}
-<!--          <div class="clearfix">-->
-<!--            <a class="btn btn-primary float-right" href="posts">Všechny příspěvky &rarr;</a>-->
-<!--          </div>-->
+          {% block content %}{% endblock %}
+  <!--          <div class="clearfix">-->
+  <!--            <a class="btn btn-primary float-right" href="posts">Všechny příspěvky &rarr;</a>-->
+  <!--          </div>-->
+        </div>
       </div>
     </div>
   </div>
+
+<!--  <footer>-->
+<!--    <a href="https://www.mzk.cz/"><img src="../static/img/mzk_logo.png" alt="Moravská zemská knihovna v Brně" /></a>-->
+<!--    <a href="https://www.fit.vutbr.cz/"><img src="../static/img/fit_logo.png" alt="Fakulta informačních technologií VUT v Brně" /></a>-->
+<!--    <a href="https://www.mkcr.cz/"><img src="../static/img/mkcr_logo.png" alt="Ministerstvo kultury České republiky" /></a>-->
+<!--  </footer>-->
+
+  <!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="text-center">
+        <a href="https://www.mzk.cz/"><img src="../static/img/mzk_logo.png" alt="Moravská zemská knihovna v Brně" /></a>
+    <a href="https://www.fit.vutbr.cz/"><img src="../static/img/fit_logo.png" alt="Fakulta informačních technologií VUT v Brně" /></a>
+    <a href="https://www.mkcr.cz/"><img src="../static/img/mkcr_logo.png" alt="Ministerstvo kultury České republiky" /></a>
+
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+</div>
 
   <!-- Bootstrap core JavaScript -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
