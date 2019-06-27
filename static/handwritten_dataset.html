@@ -20,7 +20,8 @@
     <form id="handwritten_dataset_form" action="/handwritten_dataset" method="POST" enctype="multipart/form-data">
         <div class="input-default-wrapper mt-5">
             <div class="input-group">
-                <div class="input-group-text mb-3" id="hwr_get_button" onclick="getRandomHandwrittenPage()">Get document</div>
+                onclick=”ga(‘send’, ‘event’, ‘PDF’, ‘Download’, ‘Company Brochure – PDF Download’);
+                <div class="input-group-text mb-3" id="hwr_get_button" onclick="ga('send', 'event', 'HWR', 'Download', 'HWR page download');getRandomHandwrittenPage()">Get document</div>
             </div>
 
             <div class="input-group">
@@ -29,7 +30,7 @@
                     <label class="custom-file-label" id="hwr_upload_label" for="hwr_upload_file_input">Choose file</label>
                 </div>
 
-                <span class="input-group-text" id="hwr_upload_button" onclick="uploadHandwrittenPages()">Upload</span>
+                <span class="input-group-text" id="hwr_upload_button" onclick="ga('send', 'event', 'HWR', 'Upload', 'HWR page upload');uploadHandwrittenPages()">Upload</span>
             </div>
         </div>
     </form>
