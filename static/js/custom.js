@@ -27,6 +27,7 @@ function updateNumberOfFiles() {
 }
 
 function getRandomHandwrittenPage() {
+    gtag('event', 'HWR', {'event_category': 'Download pages'});
     window.location = "/get_handwritten_page?random=" + Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
 }
 
@@ -39,6 +40,7 @@ function uploadHandwrittenPages() {
         document.getElementById("error_block").style.display = "block";
         document.getElementById("hwr_upload_form_no_file_message").style.display = "block";
     } else {
+        gtag('event', 'HWR', {'event_category': 'Upload image'});
         document.getElementById("handwritten_dataset_form").submit();
     }
 }
