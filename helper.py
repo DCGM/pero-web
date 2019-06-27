@@ -58,6 +58,11 @@ def save_files(request, input_name, path, extensions):
 
     success = True
 
+    extensions_error_printed = False
+
+    status = Status.FAILURE
+    message = "There was a problem saving your file(s)."
+
     if input_name in request.files:
         files = request.files.getlist(input_name)
 
@@ -69,15 +74,17 @@ def save_files(request, input_name, path, extensions):
                 file_path = os.path.join(path, filename)
 
                 file.save(file_path)
-                if not os.path.exists(file_path):
+                if not os.path.isfile(file_path):
                     success = False
+            else:
+                success = False
+
+                if not is_allowed(file, extensions) and not extensions_error_printed:
+                    message += " Allowed extensions: " + ", ".join(extensions) + "."
 
     if success:
         status = Status.SUCCESS
         message = "File(s) successfully saved. Thank you for participating."
-    else:
-        status = Status.FAILURE
-        message = "There was a problem saving your file(s)."
 
     return Result(status, None, message)
 
