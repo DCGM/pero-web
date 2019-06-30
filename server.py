@@ -68,7 +68,10 @@ def brno_mobile_ocr_dataset():
         file_path = bmod_helper.save_file(request, "bmod_uploaded_transcription_file", configuration["brno_mobile_ocr_dataset"]["upload_path"])
 
         if file_path is not None:
-            result = bmod_helper.evaluate(file_path, configuration["brno_mobile_ocr_dataset"]["ground_truth_path"])
+            result = bmod_helper.evaluate(file_path,
+                                          configuration["brno_mobile_ocr_dataset"]["ground_truth_easy"],
+                                          configuration["brno_mobile_ocr_dataset"]["ground_truth_medium"],
+                                          configuration["brno_mobile_ocr_dataset"]["ground_truth_hard"])
         else:
             result = Result(Status.FAILURE, None, "Could not save file from the request.")
 

@@ -7,6 +7,7 @@ import datetime
 
 from typing import Optional
 from bmod.result import Result, Status
+from bmod.eval_data import EvalData
 
 from flask import render_template, send_file
 from werkzeug.utils import secure_filename
@@ -101,8 +102,11 @@ def sort_posts(posts):
 def get_bmod_page(result: Optional[Result] = None, path="static/brno_mobile_ocr_dataset.html", ):
     if result is not None:
         if result.status == Status.SUCCESS:
-            eval_data = result.data
-            output = show_page(path, success=True, id=eval_data.id, cer=eval_data.cer, wer=eval_data.wer, message=result.message)
+            eval_data = result.data  # type: EvalData
+            output = show_page(path, success=True, id=eval_data.id, message=result.message,
+                               cer_easy=eval_data.cer_easy, wer_easy=eval_data.wer_easy,
+                               cer_medium=eval_data.cer_medium, wer_medium=eval_data.wer_medium,
+                               cer_hard=eval_data.cer_hard, wer_hard=eval_data.wer_hard)
         else:
             output = show_page(path, success=False, message=result.message)
     else:

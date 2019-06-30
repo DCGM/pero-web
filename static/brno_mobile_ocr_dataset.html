@@ -43,9 +43,34 @@
     {% if success is defined and success == true %}
         <p>Thank you for the participation. Your achieved results:</p>
 
-        <table id="results">
-            <tr><td>CER:</td><td>{{ cer }}</td></tr>
-            <tr><td>WER:</td><td>{{ wer }}</td></tr>
+        <table class="results">
+            <thead>
+                <tr><th colspan="2">Easy subset</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>CER:</td><td>{{ cer_easy }}</td></tr>
+                <tr><td>WER:</td><td>{{ wer_easy }}</td></tr>
+            </tbody>
+        </table>
+
+        <table class="results">
+            <thead>
+                <tr><th colspan="2">Easy subset</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>CER:</td><td>{{ cer_medium }}</td></tr>
+                <tr><td>WER:</td><td>{{ wer_medium }}</td></tr>
+            </tbody>
+        </table>
+
+        <table class="results">
+            <thead>
+                <tr><th colspan="2">Easy subset</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>CER:</td><td>{{ cer_hard }}</td></tr>
+                <tr><td>WER:</td><td>{{ wer_hard }}</td></tr>
+            </tbody>
         </table>
 
         {% if message is defined and message|length > 0 %}
