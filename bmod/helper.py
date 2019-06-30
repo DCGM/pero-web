@@ -1,22 +1,63 @@
+import datetime
 import os
 import uuid
+from typing import List
 import bmod.test_transcriptions as test_transcriptions
 
 from bmod.transcription import Transcription
 from bmod.result import Result, Status
 from bmod.eval_data import EvalData
+from bmod.eval_result import  EvaluationResult
 
 
-def save_file(req, input_name, path):
-    if not os.path.exists(path):
-        os.makedirs(path)
+def create_default_result_file(path):
+    with open(path, "w") as f:
+        f.write("Baseline LSTM\tCNN_LSTM_CTC\t30.06.2019\t0.34\t2.00\t5.71\t22.64\t32.56\t72.99\t3.18\t10.85\n")
+        f.write("Baseline Conv\tCNN_CTC\t30.06.2019\t0.50\t2.79\t7.82\t28.50\t39.76\t80.69\t4.19\t13.39\n")
+
+
+def parse_results(path):
+    results = []
+
+    if not os.path.isfile(path):
+        create_default_result_file(path)
+
+    with open(path, "r") as f:
+        for line in f:
+            line = line.strip()
+            if len(line) > 0:
+                results.append(parse_eval_result(line))
+
+    return results
+
+
+def parse_eval_result(line):
+    try:
+        name, description, date, \
+            cer_easy, wer_easy, \
+            cer_medium, wer_medium, \
+            cer_hard, wer_hard, \
+            cer_overall, wer_overall = line.split("\t")
+    except:
+        print(line)
+        raise
+
+    return EvaluationResult(name, description, date, cer_easy, wer_easy, cer_medium, wer_medium, cer_hard, wer_hard, cer_overall, wer_overall)
+
+
+def save_file(req, name, description, input_name, destination_directory, translation_file_path):
+    if not os.path.exists(destination_directory):
+        os.makedirs(destination_directory)
 
     file_path = None
-    name = uuid.uuid4().hex + ".txt"
+    unique_name = uuid.uuid4().hex + ".txt"
+
+    with open(translation_file_path, "a") as f:
+        f.write("{filename}\t{name}\t{description}\n".format(filename=unique_name, name=name, description=description))
 
     if input_name in req.files:
         file = req.files[input_name]
-        file_path = os.path.join(path, name)
+        file_path = os.path.join(destination_directory, unique_name)
         file.save(file_path)
 
     return file_path
@@ -54,3 +95,16 @@ def evaluate(transcription_path, ground_truth_easy, ground_truth_medium, ground_
 
     return result
 
+
+def write_results_file(name, description, path):
+    date = datetime.datetime.utcnow().strftime("%d.%m.%Y")
+    with open(path, "a") as f:
+        f.write("{name}\t{description}\t{date}\tN/A\tN/A\tN/A\tN/A\tN/A\tN/A\tN/A\tN/A\n".format(name=name, description=description, date=date))
+
+
+def check_name(evaluation_results: List[EvaluationResult], name, description):
+    for evaluation_result in evaluation_results:
+        if evaluation_result.name == name and evaluation_result.description == description:
+            return False
+
+    return True

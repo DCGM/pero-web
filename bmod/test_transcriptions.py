@@ -34,19 +34,60 @@ def load_transcriptions(path):
     return Result(Status.SUCCESS, transcriptions)
 
 
-def test(transcriptions, ground_truths):
-    lines_result = process_lines(transcriptions, ground_truths)
-    if lines_result.status == Status.FAILURE:
-        return lines_result
+def test(transcriptions, ground_truths_easy, ground_truths_medium, ground_truths_hard):
+    lines_easy_result = process_lines(transcriptions, ground_truths_easy)
+    if lines_easy_result.status == Status.FAILURE:
+        return lines_easy_result
 
-    lines = lines_result.data
-    if len(lines) == 0:
+    lines_easy = lines_easy_result.data
+    if len(lines_easy) == 0:
         return Result(Status.FAILURE, None, "There are no lines to calculate CER and WER.")
 
-    cer = float(sum([line.char_distance() for line in lines])) / sum([len(line.ground_truth) for line in lines])
-    wer = float(sum([line.word_distance() for line in lines])) / sum([len(line.ground_truth.split()) for line in lines])
+    lines_medium_result = process_lines(transcriptions, ground_truths_medium)
+    if lines_medium_result.status == Status.FAILURE:
+        return lines_medium_result
 
-    return Result(Status.SUCCESS, (cer, wer))
+    lines_medium = lines_medium_result.data
+    if len(lines_medium) == 0:
+        return Result(Status.FAILURE, None, "There are no lines to calculate CER and WER.")
+    
+    lines_hard_result = process_lines(transcriptions, ground_truths_hard)
+    if lines_hard_result.status == Status.FAILURE:
+        return lines_hard_result
+
+    lines_hard = lines_hard_result.data
+    if len(lines_hard) == 0:
+        return Result(Status.FAILURE, None, "There are no lines to calculate CER and WER.")
+
+    char_errors_easy = sum([line.char_distance() for line in lines_easy])
+    char_errors_medium = sum([line.char_distance() for line in lines_medium])
+    char_errors_hard = sum([line.char_distance() for line in lines_hard])
+
+    char_length_easy = sum([len(line.ground_truth) for line in lines_easy])
+    char_length_medium = sum([len(line.ground_truth) for line in lines_medium])
+    char_length_hard = sum([len(line.ground_truth) for line in lines_hard])
+
+    word_errors_easy = sum([line.word_distance() for line in lines_easy])
+    word_errors_medium = sum([line.word_distance() for line in lines_medium])
+    word_errors_hard = sum([line.word_distance() for line in lines_hard])
+    
+    word_length_easy = sum([len(line.ground_truth.split()) for line in lines_easy])
+    word_length_medium = sum([len(line.ground_truth.split()) for line in lines_medium])
+    word_length_hard = sum([len(line.ground_truth.split()) for line in lines_hard])
+
+    cer_easy = float(char_errors_easy) / char_length_easy
+    wer_easy = float(word_errors_easy) / word_length_easy
+
+    cer_medium = float(char_errors_medium) / char_length_medium
+    wer_medium = float(word_errors_medium) / word_length_medium
+
+    cer_hard = float(char_errors_hard) / char_length_hard
+    wer_hard = float(word_errors_hard) / word_length_hard
+
+    cer_overall = float(sum([char_errors_easy, char_errors_medium, char_errors_hard])) / sum([char_length_easy, char_length_medium, char_length_hard])
+    wer_overall = float(sum([word_errors_easy, word_errors_medium, word_errors_hard])) / sum([word_length_easy, word_length_medium, word_length_hard])
+
+    return Result(Status.SUCCESS, EvalData(None, cer_easy, wer_easy, cer_medium, wer_medium, cer_hard, wer_hard, cer_overall, wer_overall))
 
 
 def process_lines(transcriptions, ground_truths):
@@ -71,7 +112,7 @@ def process_lines(transcriptions, ground_truths):
     return Result(Status.SUCCESS, lines, message=message)
 
 
-def test_files(transcriptions_path: str, ground_truths_path: str) -> Result:
+def test_files(transcriptions_path: str, ground_truths_easy_path: str, ground_truths_medium_path: str, ground_truths_hard_path: str) -> Result:
     '''
     Args:
         transcriptions_path (str): Path to transcription file.
@@ -84,11 +125,19 @@ def test_files(transcriptions_path: str, ground_truths_path: str) -> Result:
     if transcriptions_result.status == Status.FAILURE:
         return transcriptions_result
 
-    ground_truths_result = load_transcriptions(ground_truths_path)
-    if ground_truths_result.status == Status.FAILURE:
-        return ground_truths_result
+    ground_truths_easy_result = load_transcriptions(ground_truths_easy_path)
+    if ground_truths_easy_result.status == Status.FAILURE:
+        return ground_truths_easy_result
+    
+    ground_truths_medium_result = load_transcriptions(ground_truths_medium_path)
+    if ground_truths_medium_result.status == Status.FAILURE:
+        return ground_truths_medium_result
+    
+    ground_truths_hard_result = load_transcriptions(ground_truths_hard_path)
+    if ground_truths_hard_result.status == Status.FAILURE:
+        return ground_truths_hard_result
 
-    result = test(transcriptions_result.data, ground_truths_result.data)
+    result = test(transcriptions_result.data, ground_truths_easy_result.data, ground_truths_medium_result.data, ground_truths_hard_result.data)
 
     return result
 
