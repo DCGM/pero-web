@@ -79,9 +79,16 @@ function getFileName(name) {
 }
 
 function uploadBMODTranscriptionFile() {
-    var uploadInput = document.getElementById("bmod_upload_file_input");
+    var uploadNameInput = document.getElementById("bmod_upload_name")
+    var uploadFileInput = document.getElementById("bmod_upload_file_input");
 
-    if (uploadInput.value == "") {
+    if (uploadNameInput.value == "") {
+        document.getElementById("bmod_upload_form_no_file_message").style.display = "none";
+        document.getElementById("error_block").style.display = "block";
+        document.getElementById("bmod_upload_form_empty_name_message").style.display = "block";
+    }
+    else if (uploadFileInput.value == "") {
+        document.getElementById("bmod_upload_form_empty_name_message").style.display = "none";
         document.getElementById("error_block").style.display = "block";
         document.getElementById("bmod_upload_form_no_file_message").style.display = "block";
     } else {

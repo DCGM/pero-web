@@ -8,10 +8,22 @@
     margin-bottom: 5%;
 }
 
+#bmod_upload_label {
+    font-size: 16px !important;
+}
+
 #bmod_upload_button {
     cursor: pointer !important;
     margin-left: 3%;
-    font-size: 20px;
+    height: 38px;
+}
+
+#bmod_upload_name {
+    margin-right: 2%;
+}
+
+#bmod_upload_description {
+    margin-left: 2%;
 }
 
 .custom-file,
@@ -25,7 +37,8 @@
     border-bottom-right-radius: 0.25rem !important;
 }
 
-#bmod_upload_form_no_file_message {
+#bmod_upload_form_no_file_message,
+#bmod_upload_form_empty_name_message {
     display: none;
     text-align: center;
 }
@@ -50,6 +63,7 @@
     padding: 3%;
     font-size: 110%;
     margin-top: 5%;
+    margin-bottom: 5%;
 
     -webkit-box-shadow: 0px 0px 10px 0px rgba(145,145,145,1);
     -moz-box-shadow: 0px 0px 10px 0px rgba(145,145,145,1);
@@ -60,17 +74,21 @@
     text-align: center;
 }
 
-#success_block table {
+table {
     margin: auto !important;
 }
 
-#success_block table.results {
-    font-weight: bold !important;
-    font-size: 122% !important;
+table.results thead td {
+    font-weight: bold;
 }
 
-#success_block table.results td {
-    padding: 0 10% !important;
+table.results {
+    font-size: 70% !important;
+}
+
+table.results td {
+    padding: 0 1% !important;
+    text-align: center;
 }
 .form-inline .input-group,
 .form-inline .custom-select {

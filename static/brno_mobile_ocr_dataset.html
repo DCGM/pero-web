@@ -17,22 +17,32 @@
 <h2>Evaluate</h2>
 <p>You can evaluate your OCR system using form below.</p>
 <form id="bmod_upload_form" method="POST" action="/brno_mobile_ocr_dataset" enctype="multipart/form-data">
-    <div class="input-group">
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" name="bmod_uploaded_transcription_file" id="bmod_upload_file_input" aria-describedby="bmod_upload_file_input">
-            <label class="custom-file-label" id="bmod_upload_label" for="bmod_upload_file_input">Choose file</label>
+    <p>
+        <div class="input-group">
+            <input type="text" name="bmod_upload_name" id="bmod_upload_name" class="form-control" placeholder="Name (required)" />
+            <input type="text" name="bmod_upload_description" id="bmod_upload_description" class="form-control" placeholder="Short description (optional)" />
         </div>
+    </p>
 
-        <span class="input-group-text" id="bmod_upload_button" onclick="uploadBMODTranscriptionFile()">Upload</span>
-    </div>
+    <p>
+        <div class="input-group">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="bmod_uploaded_transcription_file" id="bmod_upload_file_input" aria-describedby="bmod_upload_file_input">
+                <label class="custom-file-label" id="bmod_upload_label" for="bmod_upload_file_input">Choose file</label>
+            </div>
+
+            <span class="input-group-text" id="bmod_upload_button" onclick="uploadBMODTranscriptionFile()">Upload</span>
+        </div>
+    </p>
 </form>
 
 <div id="error_block" {% if success is not defined or success == true %} class="hidden" {% endif %}>
     <p id="bmod_upload_form_no_file_message">Please, select a file.</p>
+    <p id="bmod_upload_form_empty_name_message">Please, fill your name or your team name.</p>
 
     {% if success is defined and success == false %}
         {% if message is defined and message|length > 0 %}
-            <p>Error message: {{ message }}</p>
+            <p>{{ message }}</p>
         {% else %}
             <p>Something unexpectedly failed. Please, report this to ikiss@fit.vutbr.cz.</p>
         {% endif %}
@@ -41,41 +51,57 @@
 
 <div id="success_block" {% if success is not defined or success == false %} class="hidden" {% endif %}>
     {% if success is defined and success == true %}
-        <p>Thank you for the participation. Your achieved results:</p>
-
-        <table class="results">
-            <thead>
-                <tr><th colspan="2">Easy subset</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>CER:</td><td>{{ cer_easy }}</td></tr>
-                <tr><td>WER:</td><td>{{ wer_easy }}</td></tr>
-            </tbody>
-        </table>
-
-        <table class="results">
-            <thead>
-                <tr><th colspan="2">Easy subset</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>CER:</td><td>{{ cer_medium }}</td></tr>
-                <tr><td>WER:</td><td>{{ wer_medium }}</td></tr>
-            </tbody>
-        </table>
-
-        <table class="results">
-            <thead>
-                <tr><th colspan="2">Easy subset</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>CER:</td><td>{{ cer_hard }}</td></tr>
-                <tr><td>WER:</td><td>{{ wer_hard }}</td></tr>
-            </tbody>
-        </table>
-
         {% if message is defined and message|length > 0 %}
-            <p>Additional info: {{ message }}</p>
+            <p>{{ message }}</p>
         {% endif %}
     {% endif %}
 </div>
+
+<h2>Leaderboard</h2>
+
+    {% if evaluation_results is defined %}
+        <table class="results">
+            <thead>
+                <tr>
+                    <td rowspan="2">Name</td>
+                    <td rowspan="2">Description</td>
+                    <td rowspan="2">Date</td>
+                    <td colspan="2">Easy</td>
+                    <td colspan="2">Medium</td>
+                    <td colspan="2">Hard</td>
+                    <td colspan="2">Overall</td>
+                </tr>
+                <tr>
+                    <td>CER</td>
+                    <td>WER</td>
+                    <td>CER</td>
+                    <td>WER</td>
+                    <td>CER</td>
+                    <td>WER</td>
+                    <td>CER</td>
+                    <td>WER</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for evaluation_result in evaluation_results %}
+                <tr>
+                    <td>{{evaluation_result.name}}</td>
+                    <td>{{evaluation_result.description}}</td>
+                    <td>{{evaluation_result.date}}</td>
+                    <td>{{evaluation_result.cer_easy}}</td>
+                    <td>{{evaluation_result.wer_easy}}</td>
+                    <td>{{evaluation_result.cer_medium}}</td>
+                    <td>{{evaluation_result.wer_medium}}</td>
+                    <td>{{evaluation_result.cer_hard}}</td>
+                    <td>{{evaluation_result.wer_hard}}</td>
+                    <td>{{evaluation_result.cer_overall}}</td>
+                    <td>{{evaluation_result.wer_overall}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Could not parse data!</p>
+    {% endif %}
+
 {% endblock %}

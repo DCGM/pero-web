@@ -64,20 +64,26 @@ def datasets():
 
 @app.route('/brno_mobile_ocr_dataset', methods=['GET', 'POST'])
 def brno_mobile_ocr_dataset():
+    evaluation_results = bmod_helper.parse_results(configuration["brno_mobile_ocr_dataset"]["result_data"])
+
     if request.method == 'POST':
-        file_path = bmod_helper.save_file(request, "bmod_uploaded_transcription_file", configuration["brno_mobile_ocr_dataset"]["upload_path"])
+        name = request.form["bmod_upload_name"]
+        description = request.form["bmod_upload_description"]
 
-        if file_path is not None:
-            result = bmod_helper.evaluate(file_path,
-                                          configuration["brno_mobile_ocr_dataset"]["ground_truth_easy"],
-                                          configuration["brno_mobile_ocr_dataset"]["ground_truth_medium"],
-                                          configuration["brno_mobile_ocr_dataset"]["ground_truth_hard"])
+        if bmod_helper.check_name(evaluation_results, name, description):
+            file_path = bmod_helper.save_file(request, name, description, "bmod_uploaded_transcription_file", configuration["brno_mobile_ocr_dataset"]["upload_path"], configuration["brno_mobile_ocr_dataset"]["translation_file"])
+            bmod_helper.write_results_file(name, description, configuration["brno_mobile_ocr_dataset"]["result_data"])
+
+            if file_path is not None:
+                result = Result(Status.SUCCESS, None, "Thank you for your participation. Your results will be calculated and published within few minitues in the table below.")
+            else:
+                result = Result(Status.FAILURE, None, "Could not save file from the request.")
         else:
-            result = Result(Status.FAILURE, None, "Could not save file from the request.")
+            result = Result(Status.FAILURE, None, "Leaderboard already contains results for given combination of name ({name}) and description ({description}). Please use different combination.".format(name=name, description=description))
 
-        output = helper.get_bmod_page(result)
+        output = helper.get_bmod_page(evaluation_results=evaluation_results, result=result)
     else:
-        output = helper.get_bmod_page()
+        output = helper.get_bmod_page(evaluation_results=evaluation_results)
 
     return output
 
