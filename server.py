@@ -88,6 +88,11 @@ def brno_mobile_ocr_dataset():
     return output
 
 
+@app.route('/brno_mobile_ocr_dataset/bmod_lines.zip')
+def bmod_lines():
+    return helper.send_file(configuration["brno_mobile_ocr_dataset"]["bmod_lines_zip"])
+
+
 @app.route('/get_handwritten_page', methods=['GET'])
 def get_handwritten_page():
     path = configuration["handwritten_dataset"]["source_directory"]
