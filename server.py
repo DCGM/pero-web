@@ -90,7 +90,7 @@ def brno_mobile_ocr_dataset():
 
 @app.route('/brno_mobile_ocr_dataset/bmod_lines.zip')
 def bmod_lines():
-    return helper.send_file(configuration["brno_mobile_ocr_dataset"]["bmod_lines_zip"])
+    return helper.send_file(configuration["brno_mobile_ocr_dataset"]["bmod_lines_zip"], as_attachment=True)
 
 
 @app.route('/get_handwritten_page', methods=['GET'])

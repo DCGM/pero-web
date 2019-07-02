@@ -41,12 +41,8 @@ p {
     color: whitesmoke;
 }
 
-.dotted-link {
-    border-bottom: 1px dotted;
-}
-
-.dotted-link:focus, .dotted-link:hover {
-    text-decoration: none;
+a.dotted-link {
+    text-decoration: underline dotted;
 }
 
 .pero-form {
