@@ -12,7 +12,7 @@ from bmod.eval_result import  EvaluationResult
 
 def create_default_result_file(path):
     with open(path, "w") as f:
-        f.write("Baseline LSTM\tCNN_LSTM_CTC\t30.06.2019\t0.34\t2.00\t5.71\t22.64\t32.56\t72.99\t3.18\t10.85\n")
+        f.write("Baseline LSTM\tCNN_LSTM_CTC\t30.06.2019\t0.33\t1.93\t5.65\t22.39\t32.28\t72.63\t3.15\t10.71\n")
         f.write("Baseline Conv\tCNN_CTC\t30.06.2019\t0.50\t2.79\t7.82\t28.50\t39.76\t80.69\t4.19\t13.39\n")
 
 
