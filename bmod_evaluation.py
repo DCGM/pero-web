@@ -19,11 +19,11 @@ class MyEventHandler(FileSystemEventHandler):
         if event.event_type == "created" and not event.src_path.endswith(("results.txt", "translation.txt")):
             file_name = os.path.splitext(os.path.basename(event.src_path))[0]
 
-            print("[file] Evaluating.".format(file=file_name))
+            print("[{file}] Evaluating.".format(file=file_name))
             results = evaluate(event.src_path)
-            print("[file] Writing results.".format(file=file_name))
+            print("[{file}] Writing results.".format(file=file_name))
             write_results(event.src_path, results)
-            print("[file] Finished.".format(file=file_name))
+            print("[{file}] Finished.".format(file=file_name))
 
 
 def parse_arguments():
