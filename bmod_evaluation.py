@@ -40,7 +40,15 @@ def load_translations(path):
         for line in f:
             line = line.strip()
             if len(line) > 0:
-                id, name, description = line.split("\t")
+                parts = line.split("\t")
+
+                id = parts[0]
+                name = parts[1]
+                description = ""
+
+                if len(parts) > 2:
+                    description = parts[2]
+
                 translation[id] = (name, description)
 
     return translation
