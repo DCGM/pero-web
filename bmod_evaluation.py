@@ -1,3 +1,4 @@
+import os
 import sys
 import time
 import argparse
@@ -16,9 +17,13 @@ class MyEventHandler(FileSystemEventHandler):
 
     def on_created(self, event):
         if event.event_type == "created" and not event.src_path.endswith(("results.txt", "translation.txt")):
-            print("Evaluating", event.src_path)
+            file_name = os.path.splitext(os.path.basename(event.src_path))[0]
+
+            print("[file] Evaluating.".format(file=file_name))
             results = evaluate(event.src_path)
+            print("[file] Writing results.".format(file=file_name))
             write_results(event.src_path, results)
+            print("[file] Finished.".format(file=file_name))
 
 
 def parse_arguments():
@@ -71,7 +76,7 @@ def update(data, name, description, results):
         if line.startswith("{name}\t{description}".format(name=name, description=description)):
             _, _, date, _ = line.split("\t", maxsplit=3)
             
-            new_data.append("{name}\t{description}\t{date}\t{cer_easy}\t{wer_easy}\t{cer_medium}\t{wer_medium}\t{cer_hard}\t{wer_hard}\t{cer_overall}\t{wer_overall}".format(
+            new_data.append("{name}\t{description}\t{date}\t{cer_easy:.2f}\t{wer_easy:.2f}\t{cer_medium:.2f}\t{wer_medium:.2f}\t{cer_hard:.2f}\t{wer_hard:.2f}\t{cer_overall:.2f}\t{wer_overall:.2f}".format(
                 name=name,
                 description=description,
                 date=date,
