@@ -88,14 +88,14 @@ def update(data, name, description, results):
                 name=name,
                 description=description,
                 date=date,
-                cer_easy=results.data.cer_easy,
-                wer_easy=results.data.wer_easy,
-                cer_medium=results.data.cer_medium,
-                wer_medium=results.data.wer_medium,
-                cer_hard=results.data.cer_hard,
-                wer_hard=results.data.wer_hard,
-                cer_overall=results.data.cer_overall,
-                wer_overall=results.data.wer_overall,
+                cer_easy=results.data.cer_easy * 100,
+                wer_easy=results.data.wer_easy * 100,
+                cer_medium=results.data.cer_medium * 100,
+                wer_medium=results.data.wer_medium * 100,
+                cer_hard=results.data.cer_hard * 100,
+                wer_hard=results.data.wer_hard * 100,
+                cer_overall=results.data.cer_overall * 100,
+                wer_overall=results.data.wer_overall * 100,
             ))
         else:
             new_data.append(line)
