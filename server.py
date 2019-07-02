@@ -79,7 +79,7 @@ def brno_mobile_ocr_dataset():
             else:
                 result = Result(Status.FAILURE, None, "Could not save file from the request.")
         else:
-            result = Result(Status.FAILURE, None, "Leaderboard already contains results for given combination of name ({name}) and description ({description}). Please use different combination.".format(name=name, description=description))
+            result = Result(Status.FAILURE, None, "Leaderboard already contains results for given name ({name}). Please use different name.".format(name=name, description=description))
 
         output = helper.get_bmod_page(evaluation_results=evaluation_results, result=result)
     else:

@@ -11,7 +11,6 @@ window.onload = function () {
 }
 
 function updateNumberOfFiles() {
-    console.log("UPDATE");
     var uploadInput = document.getElementById("hwr_upload_file_input");
     var uploadLabel = document.getElementById("hwr_upload_label");
 
@@ -71,9 +70,6 @@ function getFileName(name) {
         suffix = name.substring(name.length - last_chars)
         name = name.substring(0, threshold - substitution.length - last_chars) + substitution + suffix
     }
-
-    console.log(name)
-    console.log(name.length)
 
     return name
 }

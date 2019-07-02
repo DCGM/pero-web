@@ -104,7 +104,7 @@ def write_results_file(name, description, path):
 
 def check_name(evaluation_results: List[EvaluationResult], name, description):
     for evaluation_result in evaluation_results:
-        if evaluation_result.name == name and evaluation_result.description == description:
+        if evaluation_result.name == name:
             return False
 
     return True
