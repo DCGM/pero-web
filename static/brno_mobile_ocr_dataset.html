@@ -5,6 +5,21 @@
 {% endblock %}
 
 {% block content %}
+<h2>About the dataset</h2>
+<p>
+    Brno Mobile OCR Dataset (B-MOD) is a collection of 2&nbsp;113 templates (pages of scientific papers). 
+    Those templates were captured using 23 various mobile devices under unrestricted conditions ensuring that the obtained photographs contain various amount of blurriness, illumination etc.
+    In total, the dataset contains 19&nbsp;725 photographs from which more than 500k lines with precise transcriptions was extracted.
+    The templates were divided into three subsets (training, validation and testing).
+    Captured photographs and cropped lines follows this division so photographs of the same templates and lines extracted from them are in the same subset. 
+</p>
+<p>
+    On this webpage, you can download entire dataset (original templates, captured photographs with annotations in PAGE XML format, transformed photographs with annotations in PAGE XML format and cropped lines with transcriptions). 
+    Also you can evaluate your OCR system using the evaluation form below.
+    Underneath the evaluation form you can find table with results of evaluated transcriptions.
+    If you have any question, please contact ikiss@fit.vutbr.cz or ihradis@fit.vutbr.cz.
+</p>
+
 <h2>Download</h2>
 <p>Within the Brno Mobile OCR Dataset, you can download:</p>
 <ul>
@@ -15,7 +30,11 @@
 </ul>
 
 <h2>Evaluate</h2>
-<p>You can evaluate your OCR system using form below.</p>
+<p>
+    You can evaluate your OCR system using the form below.
+    Please, upload a single text file where each line corresponds to one transcribed line with the same formatting as in the downloaded ZIP archive.
+    The formating must follow pattern "filename transcription", eg. 
+</p>
 <form id="bmod_upload_form" method="POST" action="/brno_mobile_ocr_dataset" enctype="multipart/form-data">
     <p>
         <div class="input-group">
