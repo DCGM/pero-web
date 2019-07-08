@@ -5,35 +5,32 @@
 {% endblock %}
 
 {% block content %}
-<h2>About the dataset</h2>
 <p>
     Brno Mobile OCR Dataset (B-MOD) is a collection of 2&nbsp;113 templates (pages of scientific papers). 
     Those templates were captured using 23 various mobile devices under unrestricted conditions ensuring that the obtained photographs contain various amount of blurriness, illumination etc.
-    In total, the dataset contains 19&nbsp;725 photographs from which more than 500k lines with precise transcriptions was extracted.
-    The templates were divided into three subsets (training, validation and testing).
-    Captured photographs and cropped lines follows this division so photographs of the same templates and lines extracted from them are in the same subset. 
+    In total, the dataset contains 19&nbsp;725 photographs and more than 500k text lines with precise transcriptions.
+    The template pages are divided into three subsets (training, validation and testing).
 </p>
 <p>
-    On this webpage, you can download entire dataset (original templates, captured photographs with annotations in PAGE XML format, transformed photographs with annotations in PAGE XML format and cropped lines with transcriptions). 
-    Also you can evaluate your OCR system using the evaluation form below.
-    Underneath the evaluation form you can find table with results of evaluated transcriptions.
+    You can download the dataset and evaluate your OCR system below.
     If you have any question, please contact ikiss@fit.vutbr.cz or ihradis@fit.vutbr.cz.
 </p>
 
 <h2>Download</h2>
-<p>Within the Brno Mobile OCR Dataset, you can download:</p>
 <ul>
-    <li><a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/b-mod/b-mod_templates.zip">Templates</a> (1.45 GB)</li>
-    <li><a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/b-mod/b-mod_photos_and_xmls_untransformed.zip">Untransformed PAGE XML and photos</a> (31.62 GB)</li>
-    <li><a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/b-mod/b-mod_photos_and_xmls_transformed.zip">Transformed PAGE XML and photos</a> (87.45 GB)</li>
-    <li><a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/b-mod/b-mod_lines.zip">Cropped lines with transcriptions</a> (5.29 GB)</li>
+    <li><a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/b-mod/b-mod_templates.zip">Original page templates</a> (1.45 GB)</li>
+    <li><a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/b-mod/b-mod_photos_and_xmls_untransformed.zip">Photographs and associated PAGE XML annotations</a> (31.62 GB)</li>
+    <li><a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/b-mod/b-mod_photos_and_xmls_transformed.zip">Rectified photographs and associated PAGE XML annotations</a> (87.45 GB)</li>
+    <li><a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/b-mod/b-mod_lines.zip">Cropped text lines with transcriptions</a> (5.29 GB)</li>
 </ul>
 
 <h2>Evaluate</h2>
 <p>
     You can evaluate your OCR system using the form below.
     Fill your name or name of your team to identify your results.
-    Also you can enter short description of your system.
+    Please, enter a short description of your system or a link to the description.
+</p>
+<p>
     Please, upload a <b>single text file where each line corresponds to one transcribed line of the test set</b> with the same formatting as in the text files for training and validation lines in the "Cropped lines with transcriptions" ZIP archive.
     The formating must follow pattern:
 </p>
