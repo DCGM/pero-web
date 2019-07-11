@@ -62,6 +62,10 @@
     box-shadow: 0px 0px 10px 0px rgba(145,145,145,1);
 }
 
+p.intended {
+    margin: 0 5%;
+}
+
 #success_block {
     color: #4F8A10;
     background-color: #DFF2BF;
