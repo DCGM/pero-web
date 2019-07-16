@@ -91,3 +91,17 @@ function uploadBMODTranscriptionFile() {
         document.getElementById("bmod_upload_form").submit();
     }
 }
+
+$(document).ready(function(){
+    //FANCYBOX
+    //https://github.com/fancyapps/fancyBox
+    $(".fancybox").fancybox({
+        helpers : {
+            title : {
+                type : 'over'
+            }
+        },
+        openEffect: "none",
+        closeEffect: "none",
+    });
+});
