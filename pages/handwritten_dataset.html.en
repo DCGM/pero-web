@@ -1,4 +1,4 @@
-{% extends 'template.html' %}
+{% extends 'template.html.en' %}
 
 {% block header %}
   Handwritten dataset
@@ -19,11 +19,11 @@
     </p>
     <p>
         Please scan the completed pages using a desk scanner and upload them by the form below or send it to: ihradis@fit.vutbr.cz with subject "Brno HWR dataset".
-        Alternatively, send the completed pages to: Michal Hradiš, Faculty of Information Technology, BUT, Božetěchova 1/2, 612 66 Brno.
+        Alternatively, send the completed pages to: Michal Hradiš, Faculty of Information Technology, BUT, Božetěchova 1/2, 612 00 Brno.
         By sending us the filled pages you agree that your handwriting may be anonymously distributed and used for any purpose without any restrictions.
     </p>
 
-    <form id="handwritten_dataset_form" action="/handwritten_dataset" method="POST" enctype="multipart/form-data">
+    <form id="handwritten_dataset_form" lang="en" action="/handwritten_dataset" method="POST" enctype="multipart/form-data">
         <div class="input-default-wrapper mt-5">
             <div class="input-group">
                 <div class="input-group-text mb-3" id="hwr_get_button" onclick="getRandomHandwrittenPage()">Download random pages to rewrite</div>

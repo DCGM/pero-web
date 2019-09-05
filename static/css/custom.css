@@ -34,6 +34,10 @@ p {
     font-size: 16px !important;
 }
 
+#mainNav .navbar-nav>li.nav-item>img {
+    cursor: pointer;
+}
+
 .post-heading > .post-meta {
     font-size: 18px;
     font-style: italic;

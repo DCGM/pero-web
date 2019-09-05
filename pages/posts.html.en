@@ -1,0 +1,9 @@
+{% extends 'template.html.en' %}
+
+{% block header %}
+  All posts
+{% endblock %}
+
+{% block content %}
+  {{ all_posts|safe }}
+{% endblock %}

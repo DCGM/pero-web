@@ -1,7 +1,7 @@
-{% extends 'template.html' %}
+{% extends 'template.html.cs' %}
 
 {% block header %}
-    Help us improve handwitten text transcription
+    Pomozte nám vylepšit přepis ručně psaného písma
 {% endblock %}
 
 {% block perex %}

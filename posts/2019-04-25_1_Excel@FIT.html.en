@@ -1,4 +1,4 @@
-{% extends 'template.html' %}
+{% extends 'template.html.en' %}
 
 {% block header %}
     Active learning for OCR at student conference Excel@FIT

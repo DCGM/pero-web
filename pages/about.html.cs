@@ -1,7 +1,7 @@
-{% extends 'template.html' %}
+{% extends 'template.html.cs' %}
 
 {% block header %}
-  Project PERO
+  Projekt PERO
 {% endblock %}
 
 {% block content %}

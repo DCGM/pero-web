@@ -1,0 +1,9 @@
+{% extends 'template.html.en' %}
+
+{% block header %}
+  Page not found (404)
+{% endblock %}
+
+{% block perex %}
+  The page you are requesting could not be found.
+{% endblock %}

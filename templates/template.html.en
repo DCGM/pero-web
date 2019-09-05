@@ -12,10 +12,6 @@
 
   <link rel="shortcut icon" href="../static/img/favicon.ico">
 
-  <!-- mdbootstrap -->
-  <!-- link href="../static/vendor/bootstrap/css/mdb.css" rel="stylesheet"-->
-  <!-- link href="../static/vendor/bootstrap/css/style.css" rel="stylesheet"-->
-
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -66,11 +62,10 @@
           <li class="nav-item">
             <a class="nav-link" href="/publications">Publications</a>
           </li>
-
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link" href="/annotation_servers">Anotační servery</a>-->
-<!--          </li>-->
-
+          <li class="nav-item">
+            <img src="../static/img/czech_republic_flag.png" onclick="setLanguage('cs')" />
+            <img src="../static/img/english_flag.png" onclick="setLanguage('en')" />
+          </li>
         </ul>
       </div>
     </div>
@@ -102,19 +97,10 @@
           </p>
 
           {% block content %}{% endblock %}
-  <!--          <div class="clearfix">-->
-  <!--            <a class="btn btn-primary float-right" href="posts">Všechny příspěvky &rarr;</a>-->
-  <!--          </div>-->
         </div>
       </div>
     </div>
   </div>
-
-<!--  <footer>-->
-<!--    <a href="https://www.mzk.cz/"><img src="../static/img/mzk_logo.png" alt="Moravská zemská knihovna v Brně" /></a>-->
-<!--    <a href="https://www.fit.vutbr.cz/"><img src="../static/img/fit_logo.png" alt="Fakulta informačních technologií VUT v Brně" /></a>-->
-<!--    <a href="https://www.mkcr.cz/"><img src="../static/img/mkcr_logo.png" alt="Ministerstvo kultury České republiky" /></a>-->
-<!--  </footer>-->
 
   <!-- Footer -->
 <footer class="page-footer font-small blue">

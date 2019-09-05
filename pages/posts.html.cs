@@ -1,7 +1,7 @@
-{% extends 'template.html' %}
+{% extends 'template.html.cs' %}
 
 {% block header %}
-  All news
+  Všechny příspěvky
 {% endblock %}
 
 {% block content %}

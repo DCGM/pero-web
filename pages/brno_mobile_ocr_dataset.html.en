@@ -1,4 +1,4 @@
-{% extends 'template.html' %}
+{% extends 'template.html.en' %}
 
 {% block header %}
 Brno Mobile OCR Dataset
@@ -150,7 +150,7 @@ Brno Mobile OCR Dataset
     6149958838f466bbb508399a83bbeb5c.jpg_rec_l0004.jpg&nbsp;Theorems 1 and 2 show that, in checking for deadlock or
 </p>
 
-<form id="bmod_upload_form" method="POST" action="/brno_mobile_ocr_dataset" enctype="multipart/form-data">
+<form id="bmod_upload_form" lang="en" method="POST" action="/brno_mobile_ocr_dataset" enctype="multipart/form-data">
     <p>
     <div class="input-group">
         <input type="text" name="bmod_upload_name" id="bmod_upload_name" class="form-control"

@@ -16,24 +16,30 @@ function updateNumberOfFiles() {
 
     var selectedFiles = uploadInput.files;
 
-    console.log(selectedFiles);
+    var language = getLanguage();
 
     if (selectedFiles.length === 0) {
-        uploadLabel.innerText = "Choose file";
+        if (language == "cs") {
+            uploadLabel.innerText = "Vyberte soubor";
+        } else {
+            uploadLabel.innerText = "Choose file";
+        }
     } else {
-        uploadLabel.innerText = "Selected files: " + selectedFiles.length;
+        if (language == "cs") {
+            uploadLabel.innerText = "Vybráno souborů: " + selectedFiles.length;
+        } else {
+            uploadLabel.innerText = "Selected files: " + selectedFiles.length;
+        }
     }
 }
 
 function getRandomHandwrittenPage() {
     gtag('event', 'HWR', {'event_category': 'Download pages'});
-    window.location = "/get_handwritten_page?random=" + Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+    window.location = "/get_handwritten_page";
 }
 
 function uploadHandwrittenPages() {
     var uploadInput = document.getElementById("hwr_upload_file_input");
-
-    console.log(uploadInput.value)
 
     if (uploadInput.value == "") {
         document.getElementById("error_block").style.display = "block";
@@ -46,16 +52,19 @@ function uploadHandwrittenPages() {
 
 
 function updateInputText() {
-
     var uploadInput = document.getElementById("bmod_upload_file_input");
     var uploadLabel = document.getElementById("bmod_upload_label");
 
     var selectedFiles = uploadInput.files;
 
-    console.log(selectedFiles);
-
     if (selectedFiles.length === 0) {
-        uploadLabel.innerText = "Choose file";
+        var language = getLanguage();
+
+        if (language == "cs") {
+            uploadLabel.innerText = "Vyberte soubor";
+        } else {
+            uploadLabel.innerText = "Choose file";
+        }
     } else {
         uploadLabel.innerText = getFileName(selectedFiles[0].name);
     }
@@ -90,6 +99,46 @@ function uploadBMODTranscriptionFile() {
     } else {
         document.getElementById("bmod_upload_form").submit();
     }
+}
+
+function getLanguage() {
+    language = getCookie("pero_language");
+
+    if (language == "") {
+        language = "en"
+    }
+
+    return language
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+
+    return "";
+}
+
+function setLanguage(language) {
+    setCookie("pero_language", language, 30);
+    location.reload();
+}
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
 $(document).ready(function(){

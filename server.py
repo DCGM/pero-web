@@ -1,10 +1,16 @@
+import requests
+
 import helper
 import argparse
 import config_helper
 import flask
 import os
 
-from flask import Flask, request, redirect, render_template_string
+import language_helper
+import subprocess
+import json
+
+from flask import Flask, request, redirect, render_template_string, url_for
 from bmod import helper as bmod_helper
 from bmod.result import  Result, Status
 app = Flask(__name__)
@@ -27,43 +33,65 @@ def parse_args():
     return args
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect("/not_found", code=302)
+
+
+@app.route('/not_found')
+def not_found():
+    return create_response("pages/not_found.html")
+
+
 @app.route('/')
 def index():
-    posts = helper.get_posts_preview()
+    language = get_language()
+    posts = helper.get_posts_preview(language=language)
 
-    template = env.get_template("static/index.html")
+    path = helper.localize_path("pages/index.html", language)
+
+    template = env.get_template(path)
     return template.render({'new_posts': posts})
 
 
 @app.route('/about')
 def about():
-    return helper.show_page("static/about.html")
-
-
-@app.route('/annotation_servers')
-def servers():
-    return helper.show_page("static/annotation_servers.html")
+    return create_response("pages/about.html")
 
 
 @app.route('/posts')
 def posts():
-    posts = helper.get_posts_preview(limit=None)
-    template = env.get_template("static/posts.html")
+    language = get_language()
+    posts = helper.get_posts_preview(limit=None, language=language)
+
+    path = helper.localize_path("pages/posts.html", language)
+
+    template = env.get_template(path)
     return template.render({'all_posts': posts})
 
 
 @app.route('/publications')
 def publications():
-    return helper.show_page("static/publications.html")
+    return create_response("pages/publications.html")
 
 
 @app.route('/datasets')
 def datasets():
-    return helper.show_page("static/datasets.html")
+    return create_response("pages/datasets.html")
 
 
 @app.route('/brno_mobile_ocr_dataset', methods=['GET', 'POST'])
 def brno_mobile_ocr_dataset():
+    language = get_language()
+
+    response = flask.make_response(brno_mobile_ocr_page(language=language))
+
+    set_language_cookie(response, language)
+
+    return response
+
+
+def brno_mobile_ocr_page(language=language_helper.Language.english):
     evaluation_results = bmod_helper.parse_results(configuration["brno_mobile_ocr_dataset"]["result_data"])
 
     if request.method == 'POST':
@@ -80,10 +108,10 @@ def brno_mobile_ocr_dataset():
                 result = Result(Status.FAILURE, None, "Could not save file from the request.")
         else:
             result = Result(Status.FAILURE, None, "Leaderboard already contains results for given name ({name}). Please use different name.".format(name=name, description=description))
-
-        output = helper.get_bmod_page(evaluation_results=evaluation_results, result=result)
     else:
-        output = helper.get_bmod_page(evaluation_results=evaluation_results)
+        result = None
+
+    output = helper.get_bmod_page(evaluation_results=evaluation_results, path="pages/brno_mobile_ocr_dataset.html", result=result, language=language)
 
     return output
 
@@ -96,7 +124,16 @@ def get_handwritten_page():
 
 
 @app.route('/handwritten_dataset', methods=['GET', 'POST'])
-def upload_handwritten_pages():
+def handwritten_dataset():
+    language = get_language()
+
+    response = flask.make_response(handwritten_page(language=language))
+    set_language_cookie(response, language)
+
+    return response
+
+
+def handwritten_page(language=language_helper.Language.english):
     if request.method == 'POST':
         input_name = "hwr_uploaded_files"
 
@@ -105,25 +142,51 @@ def upload_handwritten_pages():
             extensions = configuration["handwritten_dataset"]["target_extensions"]
             configuration_success = True
         except:
-            result = Result(Status.FAILURE, None, "There is a problem with server configuration.")
+            result = Result(Status.FAILURE, None, language_helper.texts[language_helper.Message.server_config_failure][language])
             configuration_success = False
 
         if configuration_success:
             try:
-                result = helper.save_files(request, input_name, path, extensions)
+                result = helper.save_files(request, language, input_name, path, extensions)
             except:
-                result = Result(Status.FAILURE, None, "There was a problem saving your file(s).")
+                result = Result(Status.FAILURE, None, language_helper.texts[language_helper.Message.save_files_failure][language])
 
-        output = helper.get_hwr_page(result)
     else:
-        output = helper.get_hwr_page()
+        result = None
+
+    output = helper.get_hwr_page(result=result, path="pages/handwritten_dataset.html", language=language)
 
     return output
 
 
 @app.route("/post/<name>")
 def show_post(name):
-    return helper.show_page(name + ".html")
+    return create_response("posts/" + name + ".html")
+
+
+def get_language():
+    if 'pero_language' in request.cookies:
+        language = language_helper.Language.from_string(request.cookies.get('pero_language'))
+    else:
+        try:
+            language = helper.get_language(request.remote_addr)
+        except:
+            language = language_helper.Language.english
+
+    return language
+
+
+def set_language_cookie(response, language):
+    response.set_cookie('pero_language', language_helper.Language.to_string(language))
+
+
+def create_response(path):
+    language = get_language()
+
+    response = flask.make_response(helper.show_page(path, language))
+    set_language_cookie(response, language)
+
+    return response
 
 
 def main():
