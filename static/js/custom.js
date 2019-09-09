@@ -35,7 +35,8 @@ function updateNumberOfFiles() {
 
 function getRandomHandwrittenPage() {
     gtag('event', 'HWR', {'event_category': 'Download pages'});
-    window.location = "/get_handwritten_page";
+    console.log("GET");
+    window.location = "/get_handwritten_page?a="+Math.random();
 }
 
 function uploadHandwrittenPages() {
