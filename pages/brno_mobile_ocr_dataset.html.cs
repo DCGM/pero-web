@@ -21,6 +21,7 @@ Brno Mobile OCR Dataset
 </p>
 <p>
     Celý dataset si můžete stáhnout níže. Zároveň zde můžete také vyhodnotit váš OCR systém.
+    Náš OCR systém je k dispozici na <a href="https://github.com/DCGM/B-MOD">githubu</a>.
     Pokud máte nějaké otázky, kontaktujte ikiss@fit.vutbr.cz nebo ihradis@fit.vutbr.cz.
 </p>
 
