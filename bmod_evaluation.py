@@ -16,14 +16,14 @@ class MyEventHandler(FileSystemEventHandler):
         self.observer = observer
 
     def on_created(self, event):
-        if event.event_type == "created" and not event.src_path.endswith(("results.txt", "translation.txt")):
+        if event.event_type == "created" and not event.src_path.endswith(("results.txt", "translation.txt", "evaluation.log")):
             file_name = os.path.splitext(os.path.basename(event.src_path))[0]
 
-            print("[{file}] Evaluating.".format(file=file_name))
+            log("[{file}] Evaluating.".format(file=file_name))
             results = evaluate(event.src_path)
-            print("[{file}] Writing results.".format(file=file_name))
+            log("[{file}] Writing results.".format(file=file_name))
             write_results(event.src_path, results)
-            print("[{file}] Finished.".format(file=file_name))
+            log("[{file}] Finished.".format(file=file_name))
 
 
 def parse_arguments():
@@ -31,6 +31,19 @@ def parse_arguments():
     parser.add_argument('-c', '--config', help='Path to config file.', required=True)
     args = parser.parse_args()
     return args
+
+
+def log(message):
+    if message[-1] != '\n':
+        message += '\n'
+
+    try:
+        with open(configuration["brno_mobile_ocr_dataset"]["log"], "a") as f:
+            f.write(message)
+            f.flush()
+
+    except:
+        print(message)
 
 
 def load_translations(path):
@@ -69,7 +82,7 @@ def write_results(file, results):
     try:
         name, description = translation[file_id]
     except:
-        print("Could not found translation for file with id:", file_id)
+        log("Could not found translation for file with id: {id}".format(id=file_id))
         return
 
     data = load_result_data(configuration["brno_mobile_ocr_dataset"]["result_data"])
