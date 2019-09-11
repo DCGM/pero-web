@@ -1,0 +1,22 @@
+{% extends 'template.html.en' %}
+
+{% block header %}
+    Help us determine the visual quality of documents
+{% endblock %}
+
+{% block perex %}
+    <p>
+		One of the areas we are dealing with is determining the visual quality of a document.
+		This is important, for example, for subsequent adjustment of documents so that the text recognition is as good as possible.
+		Comparing two documents from this perspective using algorithms is very difficult, sometimes impossible.
+		Therefore, we need to manually find out which document looks better.
+    </p>
+{% endblock %}
+
+{% block content %}
+    <p>
+		To simplify the work when comparing documents, we created an <a href="http://pchradis2.fit.vutbr.cz:8001/comparing/1">annotation server</a>.
+		You will see two cut-outs from different documents and the only task is to mark the better-looking one using the button above the image.
+		We would be very happy if you could help us with the comparison and thus improve the text recognition.
+    </p>
+{% endblock %}
