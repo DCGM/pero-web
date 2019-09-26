@@ -168,10 +168,11 @@ def get_language():
     if 'pero_language' in request.cookies:
         language = language_helper.Language.from_string(request.cookies.get('pero_language'))
     else:
-        try:
-            language = helper.get_language(request.remote_addr)
-        except:
-            language = language_helper.Language.english
+        language = language_helper.Language.english
+#        try:
+#            language = helper.get_language(request.remote_addr)
+#        except:
+#            language = language_helper.Language.english
 
     return language
 
