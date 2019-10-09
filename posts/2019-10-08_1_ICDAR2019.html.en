@@ -1,0 +1,19 @@
+{% extends 'template.html.en' %}
+
+{% block header %}
+    Best Poster Award at ICDAR 2019
+{% endblock %}
+
+{% block perex %}
+    <p>
+		At the end of September, the 15th <a href="https://www.icdar2019.org">International Conference on Document Analysis and Recognition</a> (<a href="https://www.icdar2019.org">ICDAR</a>) took place in Sydney, Australia.
+		We attended this conference with a paper describing the creation of the <a href="/brno_mobile_ocr_dataset">B-MOD dataset</a>, which was presented here on a poster session.
+		For the poster we received the Best Poster Award.
+    </p>
+{% endblock %}
+
+{% block content %}
+	<img class="img-fluid" src="/static/img/bmod_award.png" alt="B-MOD Best Poster Award">
+	<p />
+	<img class="img-fluid border border-secondary" src="/static/img/bmod_poster.png" alt="B-MOD poster">
+{% endblock %}
