@@ -55,6 +55,9 @@ Brno Mobile OCR Dataset
         <li><a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/b-mod/b-mod_lines.zip">Cropped text lines with
             transcriptions</a> (5.29 GB)
         </li>
+
+        <li><a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/b-mod/b-mod_photos_devices.txt">List of photographs with used device name</a> (947 kB)
+        </li>
     </ul>
 </p>
 
