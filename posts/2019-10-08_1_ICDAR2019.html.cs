@@ -1,7 +1,7 @@
 {% extends 'template.html.cs' %}
 
 {% block header %}
-    Best Poster Award na ICDAR 2019
+    Ocenění za nejlepší plakát na ICDAR 2019
 {% endblock %}
 
 {% block perex %}
