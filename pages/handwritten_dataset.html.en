@@ -6,17 +6,26 @@
 
 {% block content %}
     <p>
-        We are collecting a large database of anonymous examples of handwriting in order to develop automatic transcription of Czech historical documents.
-        We need examples by as many authors as possible to capture the great variability of handwriting styles.
-        Whether you rewrite by hand one page or ten and donate them to our cause, you will significantly improve how content of historical documents can be indexed and searched.
-        Our goal is to enable full-text searching for example in chronicles, parish registers, land books, and in historical correspondence.
+    	To develop automatic transcription of historical documents, we need handwritten text samples from as many authors as possible, so we kindly ask for your help.
+    	Please, download a random template below, print it, and rewrite the included text by hand on the same page.
+
     </p>
 
+	<div class="input-default-wrapper mt-5">
+		<div class="input-group">
+			<div class="input-group-text mb-3" id="hwr_get_button" onclick="getRandomHandwrittenPage()">Download pages to rewrite</div>
+		</div>
+    </div>
+
     <p>
-        Please, download a random template below, print it, and rewrite the included text by hand on the same page.
-        Please, preserve text lines and possible spelling errors.
-        Underneath the form you'll find an example of a completed page.
+		Each page contains different text, and by repeated downloading you get different unique pages.
+		Please do not rewrite one page several times.
+		You can rewrite several pages, but it would help us the most to have handwritten text samples of as many different writers as possible.
+		Keep line spacing and any spelling mistakes.
+		At the bottom of this page you'll find an example of a completed page.
     </p>
+
+	<hr />
     <p>
         Please scan the completed pages using a desk scanner and upload them by the form below or send it to: ihradis@fit.vutbr.cz with subject "Brno HWR dataset".
         Alternatively, send the completed pages to: Michal Hradiš, Faculty of Information Technology, BUT, Božetěchova 1/2, 612 00 Brno.
@@ -24,19 +33,14 @@
     </p>
 
     <form id="handwritten_dataset_form" lang="en" action="/handwritten_dataset" method="POST" enctype="multipart/form-data">
-        <div class="input-default-wrapper mt-5">
-            <div class="input-group">
-                <div class="input-group-text mb-3" id="hwr_get_button" onclick="getRandomHandwrittenPage()">Download random pages to rewrite</div>
-            </div>
+		<div class="input-group">
+			<div class="custom-file">
+				<input type="file" class="custom-file-input" name="hwr_uploaded_files" id="hwr_upload_file_input" aria-describedby="hwr_upload_file_input" multiple>
+				<label class="custom-file-label" id="hwr_upload_label" for="hwr_upload_file_input">Choose file</label>
+			</div>
 
-            <div class="input-group">
-                <span class="input-group-text" id="hwr_upload_button" onclick="uploadHandwrittenPages()">Upload</span>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="hwr_uploaded_files" id="hwr_upload_file_input" aria-describedby="hwr_upload_file_input" multiple>
-                    <label class="custom-file-label" id="hwr_upload_label" for="hwr_upload_file_input">Choose file</label>
-                </div>
-            </div>
-        </div>
+			<span class="input-group-text" id="hwr_upload_button" onclick="uploadHandwrittenPages()">Upload</span>
+		</div>
     </form>
 
     <div id="error_block" {% if success is not defined or success == true %} class="hidden" {% endif %}>
@@ -65,6 +69,13 @@
         <a href="/static/img/hwr_example.jpg" target="_blank">
             <img class="img-fluid border border-secondary" src="/static/img/hwr_example.jpg" alt="Example of transcribed page."/>
         </a>
+    </p>
+
+    <p>
+        We are collecting a large database of anonymous examples of handwriting in order to develop automatic transcription of Czech historical documents.
+        We need examples by as many authors as possible to capture the great variability of handwriting styles.
+        Whether you rewrite by hand one page or ten and donate them to our cause, you will significantly improve how content of historical documents can be indexed and searched.
+        Our goal is to enable full-text searching for example in chronicles, parish registers, land books, and in historical correspondence.
     </p>
 
 {% endblock %}
