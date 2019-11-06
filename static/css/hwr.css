@@ -20,8 +20,8 @@
 
 #hwr_upload_button {
     cursor: pointer !important;
-    padding: 0 3%;
-    margin-left: 3%;
+    padding: 0 20px;
+    margin-left: 20px;
     font-size: 20px;
     background-color: #00657b;
 	color: white;
