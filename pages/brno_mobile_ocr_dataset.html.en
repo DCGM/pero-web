@@ -201,16 +201,17 @@ Brno Mobile OCR Dataset
 <h2>Leaderboard</h2>
 
 {% if evaluation_results is defined %}
-<table class="results">
+<div class="table-responsive">
+  <table class="table table-hover results">
     <thead>
     <tr>
         <td rowspan="2">Name</td>
         <td rowspan="2">Description</td>
         <td rowspan="2">Date</td>
-        <td colspan="2">Easy</td>
-        <td colspan="2">Medium</td>
-        <td colspan="2">Hard</td>
-        <td colspan="2">Overall</td>
+        <td colspan="2" class="spanned">Easy</td>
+        <td colspan="2" class="spanned">Medium</td>
+        <td colspan="2" class="spanned">Hard</td>
+        <td colspan="2" class="spanned">Overall</td>
     </tr>
     <tr>
         <td>CER</td>

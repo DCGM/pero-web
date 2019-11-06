@@ -130,14 +130,14 @@ table.results thead td {
     font-weight: bold;
 }
 
-table.results {
-    font-size: 70% !important;
-}
-
-table.results td {
-    padding: 0 1% !important;
+table.results thead td.spanned {
     text-align: center;
 }
+
+table.results {
+    font-size: 11pt;
+}
+
 .form-inline .input-group,
 .form-inline .custom-select {
   width: auto;

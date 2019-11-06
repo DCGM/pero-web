@@ -180,16 +180,17 @@ Brno Mobile OCR Dataset
 <h2>Výsledky</h2>
 
 {% if evaluation_results is defined %}
-<table class="results">
+<div class="table-responsive">
+  <table class="table table-hover results">
     <thead>
     <tr>
         <td rowspan="2">Jméno</td>
         <td rowspan="2">Popis</td>
         <td rowspan="2">Datum</td>
-        <td colspan="2">Lehké</td>
-        <td colspan="2">Střední</td>
-        <td colspan="2">Těžké</td>
-        <td colspan="2">Celkem</td>
+        <td colspan="2" class="spanned">Lehké</td>
+        <td colspan="2" class="spanned">Střední</td>
+        <td colspan="2" class="spanned">Těžké</td>
+        <td colspan="2" class="spanned">Celkem</td>
     </tr>
     <tr>
         <td>CER</td>
@@ -219,7 +220,8 @@ Brno Mobile OCR Dataset
     </tr>
     {% endfor %}
     </tbody>
-</table>
+  </table>
+</div>
 {% else %}
 <p>Nebylo možné zpracovat data!</p>
 {% endif %}
