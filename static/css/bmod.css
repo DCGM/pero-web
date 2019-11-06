@@ -126,6 +126,10 @@ table {
     margin: auto !important;
 }
 
+table.results td {
+	vertical-align: middle;
+}
+
 table.results thead td {
     font-weight: bold;
 }
