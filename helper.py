@@ -13,6 +13,8 @@ from typing import Optional
 from bmod.result import Result, Status
 from bmod.eval_result import EvaluationResult
 
+from bs4 import BeautifulSoup
+
 from flask import render_template, send_file
 from werkzeug.utils import secure_filename
 
@@ -193,6 +195,7 @@ def render_posts_preview(posts):
         file_name_without_extension = os.path.basename(post).split(".")[0]
         post_link = "post/{name}".format(name=file_name_without_extension)
 
+        post_content = BeautifulSoup(post_content, "lxml").text
         preview = env.from_string(post_content)
         previews.append(preview.render(link=post_link))
 
