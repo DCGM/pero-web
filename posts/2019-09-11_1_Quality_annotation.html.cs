@@ -15,7 +15,7 @@
 
 {% block content %}
     <p>
-    	Pro zjednodušení práce při porovnávání dokumentů jsme vytvořili <a href="http://pchradis2.fit.vutbr.cz:8001/comparing/1">anotační server</a>.
+    	Pro zjednodušení práce při porovnávání dokumentů jsme vytvořili <a href="http://pchradis-stud.fit.vutbr.cz:9001/">anotační server</a>.
 		Zobrazí se vám zde dva výřezy z různách dokumentů a jediným úkolem je označit ten lépe vypadající pomocí tlačítka nad obrázkem.
 		Byli bychom velice rádi, pokud byste nám s porovnáváním pomohli a přispěli tak ke zlepšení rozpoznávání textu.
     </p>

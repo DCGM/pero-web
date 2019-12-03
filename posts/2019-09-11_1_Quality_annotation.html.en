@@ -15,7 +15,7 @@
 
 {% block content %}
     <p>
-		To simplify the work when comparing documents, we created an <a href="http://pchradis2.fit.vutbr.cz:8001/comparing/1">annotation server</a>.
+		To simplify the work when comparing documents, we created an <a href="http://pchradis-stud.fit.vutbr.cz:9001/">annotation server</a>.
 		You will see two cut-outs from different documents and the only task is to mark the better-looking one using the button above the image.
 		We would be very happy if you could help us with the comparison and thus improve the text recognition.
     </p>
