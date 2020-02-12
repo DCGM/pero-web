@@ -5,21 +5,24 @@
 {% endblock %}
 
 {% block content %}
-    <p>Project PERO is a cooperation between <a href="http://www.fit.vutbr.cz/">Brno University of Technology</a> and
-        <a href="https://www.mzk.cz">Moravian library</a> and is financed by <a href="https://www.mkcr.cz/?lang=en">Czech Ministry of Culture</a>
-        as an applied research project focused on cultural and national identity (NAKI II).
+    <p>V projektu PERO spolupracuje <a href="http://www.fit.vutbr.cz/">Vysoké učení technické v Brně</a> a
+        <a href="https://www.mzk.cz">Moravská zemská knihovna</a> 
+        za finanční podpory <a href="https://www.mkcr.cz/?lang=en">Ministerstva kultury České republiky</a>
+        v rámci programu NAKI II na podporu aplikovaného výzkumu a vývoje národní a kulturní identity.
     </p>
     <p>
-        The project aims to create technology and tools which would improve accessibility of digitized historic documents.
-        These tools, based on state of the art methods from computer vision, machine learning and language modeling,
-        will enable existing digital archives and libraries to provide full-text search and content extraction for low
-        quality historic printed and all hand written documents - which can not be automatically processed by the currently available tools.
+        Cílem projektu je vytvořit technologie a nástroje, které zlepší a rozšíří zpřístupnění 
+        historických digitalizovaných dokumentů odborné i laické. 
+        Konkrétně chceme dosáhnout toho, že bude technologicky možné automaticky zpracovat obsah 
+        i špatně čitelných a ručně psaných dokumentů na úrovni, která umožní full-textové vyhledávání jejich obsahu.
+        Vyvíjené nástroje využivají nejnovějších poznatků počítačového vidění, strojového učení a zpracování jazyka.
     </p>
     <p>
-        The project extends automation and capabilities of digitization pipeline by providing tools for automated
-        quality assessment and control, quality improvement, automated text transcription of historic printed documents,
-        semi-automated hand written text transcription, and automatic extraction of semantic information from semi-structured documents
-        (e.g. library catalogs and birth records). The created tools and techniques will be validated by processing
-        selected collections of digitized materials and by a pilot operation by cooperation with Moravian Library.
+        Jednotlivými oblastmi výzkumu v projektu je několik aspektů digitalizačních linek: automatická kontrola a 
+        zlepšování kvality digitalizátů, automatický přepis textu tištěných starších a nekvalitních tištěných dokumentů,
+        automatický a polo-automatický přepis ručně psaného textu a automatická extrakce semantických informací z
+        částečně strukturovaných dokumentů, jako jsou například katalogy a matriční knihy.
+        Vytvářené nástroje zveřejňujeme jako svobodný a otevřený software a jeho funkčnost ověřujeme 
+        při digitalizaci vybraných kolekcí převážně z Moravské zemské knihovny ale i jiných paměťových institucí.
     </p>
 {% endblock %}
