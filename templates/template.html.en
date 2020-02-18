@@ -107,9 +107,29 @@
 
   <!-- Copyright -->
   <div class="text-center">
-        <a href="https://www.mzk.cz/"><img src="../static/img/mzk_logo.png" alt="Moravská zemská knihovna v Brně" /></a>
-    <a href="https://www.fit.vutbr.cz/"><img src="../static/img/fit_logo.png" alt="Fakulta informačních technologií VUT v Brně" /></a>
-    <a href="https://www.mkcr.cz/"><img src="../static/img/mkcr_logo.png" alt="Ministerstvo kultury České republiky" /></a>
+  	<div class="row">
+		<div class="col-lg-2 offset-lg-4 col-md-3 offset-md-3  col-sm-4 offset-sm-2">
+			<p class="text-center">
+				<b>Michal Hradiš</b><br />
+				FIT BUT<br />
+				ihradis@fit.vut.cz<br />
+				+420 541 141 411
+			</p>
+		</div>
+
+		<div class="col-lg-2 col-md-3 col-sm-4">
+			<p class="text-center">
+				<b>Petr Žabička</b><br />
+				Moravian Library<br />
+				Petr.Zabicka@mzk.cz<br />
+				+420 541 646 115
+			</p>
+		</div>
+  	</div>
+
+    <a href="https://www.mzk.cz/"><img src="../static/img/mzk_logo_en.png" alt="Moravian Library" /></a>
+    <a href="https://www.fit.vutbr.cz/"><img src="../static/img/fit_logo_en.png" alt="Faculty of Information Technology, Brno University of Technology" /></a>
+    <a href="https://www.mkcr.cz/"><img src="../static/img/mkcr_logo_en.png" alt="Ministerstvo kultury České republiky" /></a>
 
   </div>
   <!-- Copyright -->

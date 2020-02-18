@@ -104,17 +104,34 @@
   </div>
 
   <!-- Footer -->
-<footer class="page-footer font-small blue">
+<footer class="page-footer font-small">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-3 offset-xl-3 col-lg-3 offset-lg-3 col-md-3 offset-md-3  col-sm-4 offset-sm-2">
+				<p class="text-center">
+					<b>Michal Hradiš</b><br />
+					FIT VUT v Brně<br />
+					ihradis@fit.vut.cz<br />
+					+420 541 141 411
+				</p>
+			</div>
 
-  <!-- Copyright -->
-  <div class="text-center">
-        <a href="https://www.mzk.cz/"><img src="../static/img/mzk_logo.png" alt="Moravská zemská knihovna v Brně" /></a>
-    <a href="https://www.fit.vutbr.cz/"><img src="../static/img/fit_logo.png" alt="Fakulta informačních technologií VUT v Brně" /></a>
-    <a href="https://www.mkcr.cz/"><img src="../static/img/mkcr_logo.png" alt="Ministerstvo kultury České republiky" /></a>
+			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-4">
+				<p class="text-center">
+					<b>Petr Žabička</b><br />
+					MZK<br />
+					Petr.Zabicka@mzk.cz<br />
+					+420 541 646 115
+				</p>
+			</div>
+		</div>
 
-  </div>
-  <!-- Copyright -->
-
+		<div class="text-center">
+			<a href="https://www.mzk.cz/"><img src="../static/img/mzk_logo.png" alt="Moravská zemská knihovna v Brně" /></a>
+			<a href="https://www.fit.vutbr.cz/"><img src="../static/img/fit_logo.png" alt="Fakulta informačních technologií VUT v Brně" /></a>
+			<a href="https://www.mkcr.cz/"><img src="../static/img/mkcr_logo.png" alt="Ministerstvo kultury České republiky" /></a>
+		</div>
+  	</div>
 </footer>
 <!-- Footer -->
 </div>

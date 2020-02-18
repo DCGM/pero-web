@@ -105,17 +105,21 @@ a.dotted-link {
 }
 
 #page-content {
-    padding-bottom: 11rem;
+	padding-bottom: 20rem;
+}
+
+/* footer contacts are stacked vertically */
+@media (max-width: 575px){
+	#page-content {
+		padding-bottom: 30rem;
+	}
 }
 
 footer {
-    clear: both;
-    overflow: hidden;
     position: absolute;
-    bottom: 0;
+	bottom: 0;
     width: 100%;
     padding: 0;
-    max-height: 7rem;
     background-color: #efefef;
     text-align: center;
     -webkit-box-shadow: inset 0px 100px 32px -100px rgba(0,0,0,0.75);
@@ -125,5 +129,6 @@ footer {
 
 footer img {
     height: 2.5rem;
-    margin: 2.5% 2% 3% 2%;
+    margin: 2.5% 0% 2% 2%;
+    margin-top: 0;
 }
