@@ -16,8 +16,9 @@ Brno Mobile OCR Dataset
         žádáme vás, abyste uvedli odkaz na článek:</b>
 </p>
 <p class="intended">
-    M. Kišš, M. Hradiš, and O. Kodym, “Brno Mobile OCR Dataset” in <i>2019 15th IAPR International Conference on
-    Document Analysis and Recognition (ICDAR)</i>, IEEE, 2019.
+	<a href="/publications" class="dotted-link">
+		Kišš, M., Hradiš, M. and Kodym, O. Brno Mobile OCR Dataset. In: <i>2019 International Conference on Document Analysis and Recognition (ICDAR)</i>. September 2019, p. 1352–1357. ISSN: 1520-5363.
+    </a>
 </p>
 <p>
     Celý dataset si můžete stáhnout níže. Zároveň zde můžete také vyhodnotit váš OCR systém.
