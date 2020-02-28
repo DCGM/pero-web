@@ -5,40 +5,38 @@
 {% endblock %}
 
 {% block perex %}
-    <p>This post briefly introduces the textline extraction pipeline used in the project.</p>
+    <p>Tento příspěvek stručně představuje postup pro extrakci řádků textu použité v projektu.</p>
 {% endblock %}
 
 {% block content %}
     <img class="img-fluid" src="/static/img/textline_extraction.png" alt="Textline extraction parses the document page so that its content can be analysed by OCR"/>
     <p>
-        Before OCR can be applied to a document page, textlines need to be efficiently detected and extracted. To fully characterize a textline,
-        two pieces of information are required. First, <i>baseline</i> coordinates specify the location of the textline. Second,
-        <i>height</i> of the font ascenders and descenders further specify the area that needs to be cropped to contain all the
-        information without overshooting into neighbouring textlines. Knowing these parameters, a full textline bounding box can
-        be easily computed. This is especially suitable when working with the standard
-        <a href="https://www.primaresearch.org/schema/PAGE/gts/pagecontent/2016-07-15/Simple%20PAGE%20XML%20Example.pdf">PAGE XML format</a>.
+        Před použitím rozpoznávání textu, je třeba efektivně detekovat a extrahovat řádky textu na dané stránce dokumentu.
+        Pro úplnou lokalizaci textového řádku jsou zapotřebí dvě informace.
+        Zaprvé jsou to souřadnice <i>základní linie (baseline)</i> určujíci umístění řádku a zadruhé to je <i>výška</i> písma nad a pod onou linií.
+        Tyto informace specifikují oblast, která musí být oříznuta, aby obsahovala všechny informace, aniž by došlo k překročení do sousedních řádků.
+        Následně lze snadno spočítat ohraničení celého řádku, které je vhodné zvláště při práci se standardním formátem
+        <a href="https://www.primaresearch.org/schema/PAGE/gts/pagecontent/2016-07-15/Simple%20PAGE%20XML%20Example.pdf">PAGE XML</a>.
     </p>
     <img class="img-fluid" src="/static/img/textline_lines.png" alt="To extract a document textline, suitable representation has to be be chosen"/>
     <p>
-        To efficiently predict these values for an input document page, we employ a convolutional neural network with encoder-decoder architecture.
-        This network analyses the page image under three different resolutions to maintain robustness across different page layouts and font sizes.
-        At each resolution step, the outputs from previous steps are concatenated to the current input as seen in the picture.
+        Pro efektivní predikci těchto hodnot na stránce vstupního dokumentu používáme konvoluční neuronovou síť s architekturou kodér-dekodér.
+        Aby byla zachována robustnost napříč různými rozloženími stránek a velikostí písma, analyzuje síť obrázek stránky ve třech různých rozlišeních.
+		Jak je vidět na obrázku níže, v každém kroce je výstup z předchozího kroku spojen s aktuálním vstupem.
     </p>
     <p>
-        On the output layer of the network, three values are predicted for each pixel. The probability of the pixel containing a baseline,
-        the estimated ascender height of the font in this pixel and, analogically, the estimated descender height. These maps are then processed using
-        simple thresholding and connected component analysis on the baseline probability channel. The font height values for each detected line are
-        computed as median of the height predictions on the corresponding baseline pixels.
+        Na výstupní vrstvě sítě jsou pro každý pixel předpovídány tři hodnoty - pravděpodobnost, že pixel obsahuje základní linii, a odhadovaná výška písma nad a pod základní linkou.
+        Mapy pravděpodobnosti základní linie jsou poté zpracovány pomocí jednoduchého prahování a analýzy spojených komponent.
+		Výšky písma pro každou detekovanou linku se pak počítají jako medián predikcí výšky na odpovídajících pixelech základní linky.
     </p>
     <img class="img-fluid" src="/static/img/textline_architecture.png" alt="Architecture of the neural network used for textline detection"/>
     <p>
-        In some cases where the page has been bent before being scanned or when hand-written textline is crooked, simple cropping of the bounding
-        box leads to images that contain more than one textline and are therefore unsuitable for OCR methods. Therefore, in such cases,
-        textline unfolding is performed as an additional post-processing step. This elastically transforms the image using normals of the detected baseline.
+    	Existují však případy, kdy je obraz naskenované stránky směrem ke hřbetu zdeformovaný, či řádek ručně psaného písma zakřivený.
+        V takových případech jednoduché oříznutí pomocí ohraničení řádku vede k výřezům, které obsahují více než jeden řádek textu, což není pro rozpoznávání textu vhodné.
+        Z tohoto důvodu je jako další krok zpracování provedeno rozvinutí textového řádku pomocí normál detekované základní linie, což elasticky transformuje obraz daného řádku.
     </p>
     <img class="img-fluid" src="/static/img/textline_unfolding.png" alt="Detected textline may need to be unfolded before cropping"/>
     <p>
-      Thus, even sub-optimally scanned document pages with challenging layout and variety of different fonts and headings can be fully automatically parsed
-      into cropped textlines.
+    	Díky tomu mohou být dokonce i neoptimálně naskenované stránky dokumentu s náročným rozvržením a řadou různých typů písma a nadpisů plně automaticky analyzovány a mohou z nich být vyříznuty řádky textu.
     </p>
 {% endblock %}

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block perex %}
-    <p>Jan Kohút published a <a href="http://excel.fit.vutbr.cz/submissions/2019/048/48.pdf">research paper</a> on active learning for historic OCR and gave an oral presentation at student conference <a href="http://excel.fit.vutbr.cz/vysledky/">Excel@FIT</a>.</p>
+    <p>Jan Kohút published a <a href="http://excel.fit.vutbr.cz/submissions/2019/048/48.pdf">research paper</a> on active learning for historic OCR and gave an oral presentation at student conference <a href="http://excel.fit.vutbr.cz/vysledky/">Excel@FIT 2019</a>.</p>
 {% endblock %}
 
 {% block content %}

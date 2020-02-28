@@ -6,8 +6,8 @@
 
 {% block perex %}
     <p>
-        During our work on image quality enhancement, we found out that our method can easily change text content in images.
-        Have you ever wanted to change history? Now you can.
+        Během naší práce na zlepšování kvality obrázků obsahujících text jsme zjistili, že pomocí naší metody je možné snadno změnit jeho obsah.
+        Chtěli jste někdy změnit historii? Nyní můžete.
     </p>
 {% endblock %}
 
@@ -15,9 +15,9 @@
     <img class="img-fluid" src="/static/img/2019-06-18_1_text_manipulation_image_0.jpg" alt="Resulting automatic transcriptions on IMPACT dataset."/>
     <img class="img-fluid" src="/static/img/2019-06-18_1_text_manipulation_image_2.jpg" alt="Resulting automatic transcriptions on IMPACT dataset."/>
     <p>
-        The method is based on Generative Adversarial Networks (GANs) and takes corrupted image and a text string as input.
-        The text string is normally produced by our text recognition and language models, but it can be manually corrected.
-        Normally, this approach would be used to fix barely readable parts of scanned documents.
-        We hope the tool will be used responsibly when released.
+        Naše metoda je založena na Generative Adversarial Network (GAN), jejímž vstupem je poškozený obraz a textový řetězec.
+        Textový řetězec je běžně vytvářen našimi modely pro rozpoznávání textu a jazykovými modely, ale lze jej i ručně opravit.
+        Normálně by se tento přístup použil k opravě stěží čitelných částí skenovaných dokumentů, ale je možné také úplně změnit text, který ve výsledném obraze bude.
+        Doufáme, že tento nástroj bude při uvolnění použit odpovědně.
     </p>
 {% endblock %}
