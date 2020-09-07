@@ -1,0 +1,19 @@
+{% extends 'template.html.en' %}
+
+{% block header %}
+    Published models
+{% endblock %}
+
+{% block perex %}
+    <p>
+		In our GitHub repository <a class="dotted-link" href="https://github.com/DCGM/pero-ocr">pero-ocr</a> we have published <a class="dotted-link" href="https://github.com/DCGM/pero-ocr#available-models">two models</a> for public usage.
+		The first is a model that is designed to analyze general layout of printed and handwritten pages.
+		The second model is designed for the recognition of European printed text, specialized in Czech newspapers.
+    </p>
+{% endblock %}
+
+{% block content %}
+	<p>
+		Both models and the configuration file are compatible with the <a class="dotted-link" href="https://github.com/DCGM/pero-ocr">pero-ocr</a> GitHub "develop" branch.
+	</p>
+{% endblock %}
