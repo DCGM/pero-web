@@ -1,0 +1,18 @@
+{% extends 'template.html.en' %}
+
+{% block header %}
+    Update of pero-ocr
+{% endblock %}
+
+{% block perex %}
+    <p>
+		During August, we updated our python package pero-ocr to version 0.3.
+		This package is based on our code available in the GitHub repository <a class="dotted-link" href="https://github.com/DCGM/pero-ocr">pero-ocr</a>.
+    </p>
+{% endblock %}
+
+{% block content %}
+	<p>
+		In the latest version, we mainly added optimized decoding with the language model, fixed an error when outputting in ALTO XML format, and modified and improved page layout analysis and line detection.
+	</p>
+{% endblock %}
