@@ -45,7 +45,7 @@
 <div id="page-container">
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
+    <div class="container-fluid">
       <a class="navbar-brand" href="/">Projekt PERO</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
@@ -55,6 +55,9 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="/about">O projektu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/github">GitHub</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/datasets">Datové sady</a>

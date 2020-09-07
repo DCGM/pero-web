@@ -1,0 +1,20 @@
+{% extends 'template.html.en' %}
+
+{% block header %}
+  GitHub
+{% endblock %}
+
+{% block content %}
+
+<p>While working on the PERO project, we created several GitHub repositories:</p>
+
+<ul>
+	<li><a class="dotted-link" href="https://github.com/DCGM/pero-enhance">PERO Enhance</a> - text-guided textual document scan quality enhancement</li>
+	<li><a class="dotted-link" href="https://github.com/DCGM/pero-ocr">PERO OCR</a> - automatic document processing</li>
+	<li><a class="dotted-link" href="https://github.com/DCGM/pero-quality">PERO Quality</a> - quality assessment of digitalized documents</li>
+	<li><a class="dotted-link" href="https://github.com/DCGM/pero-web">PERO Web</a> - project website</li>
+	<li><a class="dotted-link" href="https://github.com/DCGM/pero_ocr_web">PERO OCR Web</a> - server for automatic document processing</li>
+	<li><a class="dotted-link" href="https://github.com/DCGM/pero_quality_web">PERO Quality Web</a> - server for quality assessment of digitalized documents</li>
+</ul>
+
+{% endblock %}

@@ -80,6 +80,11 @@ def datasets():
     return create_response("pages/datasets.html")
 
 
+@app.route('/github')
+def github():
+    return create_response("pages/github.html")
+
+
 @app.route('/brno_mobile_ocr_dataset', methods=['GET', 'POST'])
 def brno_mobile_ocr_dataset():
     language = get_language()
