@@ -1,0 +1,21 @@
+{% extends 'template.html.en' %}
+
+{% block header %}
+    Military diary
+{% endblock %}
+
+{% block perex %}
+    <p>
+		One of the organizations that use the services of our OCR website is also the <a style="dotted-link" href="http://www.vhu.cz/">Military Historical Institute in Prague (VHÚ)</a>.
+		The result of this cooperation is a digitized <a style="dotted-link" href="http://www.digitalniknihovna.cz/dsmo/uuid/uuid:32f6f706-a323-11ea-95c0-001b63bd97ba">military diary</a>, which has already been imported into the Digital Study Room of the Ministry of Defense of the Czech Republic.
+    </p>
+{% endblock %}
+
+{% block content %}
+	<p>
+		"Můj Deňik", as this document is named, dates back to the First World War.
+		The diary was processed using tools developed within the PERO project, and after importing into the Digital Study Room, it is possible to search in its content, or download the content of individual pages of the diary.
+	</p>
+
+	<img class="img-fluid" src="/static/img/2020-08-25_3_military_diary_image_0.jpg" alt="Ukázka zpracovaného vojenského deníku."/>
+{% endblock %}
