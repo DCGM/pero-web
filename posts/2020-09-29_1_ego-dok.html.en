@@ -1,0 +1,18 @@
+{% extends 'template.html.cs' %}
+
+{% block header %}
+    The EGO-DOK project
+{% endblock %}
+
+{% block perex %}
+    <p>
+    	<a href="http://www.vhu.cz/">The Military Historical Institute in Prague (VHÚ)</a> has launched the <a href="http://www.vhu.cz/ego-dok-deniky-vzpominky-a-korespondence-z-prvni-svetove-valky-digitalne-pod-jednou-strechou/?fbclid=IwAR3swGU0AF2u1Pm_l-YTPRwsNM4MvDiet_buu1SSo6L5yNHeJtFIcWspE9E">EGO-DOK</a> project, the aim of which is to digitize historical documents.
+		After obtaining and scanning documents from institutions or private persons, the obtained data are processed using tools developed within the PERO project.
+    </p>
+{% endblock %}
+
+{% block content %}
+	<p>
+		The results of the processing are then handed over to the owner of the document and are also published in the Digital Study Room of the Ministry of Defense of the Czech Republic, similarly to the <a href="https://pero.fit.vutbr.cz/post/2020-08-25_3_military_diary">already processed military diaries</a>.
+	</p>
+{% endblock %}
