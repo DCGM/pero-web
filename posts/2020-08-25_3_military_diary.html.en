@@ -6,7 +6,7 @@
 
 {% block perex %}
     <p>
-		One of the organizations that use the services of our OCR website is also the <a style="dotted-link" href="http://www.vhu.cz/">Military Historical Institute in Prague (VHÚ)</a>.
+		One of the organizations that use the services of our PERO-OCR automatic handwritten transcription software is <a style="dotted-link" href="http://www.vhu.cz/">Military Historical Institute in Prague (VHÚ)</a>.
 		The result of this cooperation is a digitized <a style="dotted-link" href="http://www.digitalniknihovna.cz/dsmo/uuid/uuid:32f6f706-a323-11ea-95c0-001b63bd97ba">military diary</a>, which has already been imported into the Digital Study Room of the Ministry of Defense of the Czech Republic.
     </p>
 {% endblock %}

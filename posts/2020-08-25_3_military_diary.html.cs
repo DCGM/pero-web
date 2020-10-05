@@ -6,7 +6,7 @@
 
 {% block perex %}
     <p>
-		Jednou z organizací, které využívají služeb našeho OCR webu, je také <a style="dotted-link" href="http://www.vhu.cz/">Vojenský Historický Ústav Praha (VHÚ)</a>.
+		Jednou z organizací, které využívají služeb našeho softwaru pro automatický přepis ručně psaného písma (PERO-OCR), je <a style="dotted-link" href="http://www.vhu.cz/">Vojenský Historický Ústav Praha (VHÚ)</a>.
 		Výsledkem této spolupráce je digitalizovaný <a style="dotted-link" href="http://www.digitalniknihovna.cz/dsmo/uuid/uuid:32f6f706-a323-11ea-95c0-001b63bd97ba">vojenský deník</a>, který již byl importován do Digitální studovny Ministerstva Obrany České republiky.
     </p>
 {% endblock %}
