@@ -132,3 +132,13 @@ footer img {
     margin: 2.5% 0% 2% 2%;
     margin-top: 0;
 }
+
+div#publications ul li {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.publication-emph {
+    color: #0086a1;
+    font-weight: bold;
+}
