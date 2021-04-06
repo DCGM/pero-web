@@ -57,6 +57,9 @@
             <a class="nav-link" href="/about">O projektu</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="https://pero-ocr.fit.vutbr.cz">PERO-OCR WEB</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/github">GitHub</a>
           </li>
           <li class="nav-item">
