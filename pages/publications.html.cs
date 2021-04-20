@@ -11,7 +11,7 @@
     <li>
         <div class="publication">
             <div class="publication-text">
-            	Kodym, O. and  Hradiš, M. <span class="publication-emph">Page Layout Analysis System for Unconstrained Historic Documents</span>.
+            	Kodym, O. and  Hradiš, M. <span class="publication-emph">Page Layout Analysis System for Unconstrained Historic Documents</span>. Odesláno na double-blind review proces v rámci <i>2021 International Conference on Document Analysis and Recognition (ICDAR)</i>.
             </div>
             <div class="publication-additional-info">
                 <b>Další odkazy:</b>
@@ -22,7 +22,7 @@
     <li>
         <div class="publication">
             <div class="publication-text">
-            	Kohút, J. and  Hradiš, M. <span class="publication-emph">TS-Net: OCR Trained to Switch Between Text Transcription Styles</span>.
+            	Kohút, J. and  Hradiš, M. <span class="publication-emph">TS-Net: OCR Trained to Switch Between Text Transcription Styles</span>. Odesláno na double-blind review proces v rámci <i>2021 International Conference on Document Analysis and Recognition (ICDAR)</i>.
             </div>
             <div class="publication-additional-info">
                 <b>Další odkazy:</b>
@@ -33,7 +33,7 @@
     <li>
         <div class="publication">
             <div class="publication-text">
-            	Kišš, M., Beneš, K., and Hradiš, M. <span class="publication-emph">AT-ST: Self-Training Adaptation Strategy for OCR</span>.
+            	Kišš, M., Beneš, K., and Hradiš, M. <span class="publication-emph">AT-ST: Self-Training Adaptation Strategy for OCR</span>. Odesláno na double-blind review proces v rámci <i>2021 International Conference on Document Analysis and Recognition (ICDAR)</i>.
             </div>
         </div>
     </li>
