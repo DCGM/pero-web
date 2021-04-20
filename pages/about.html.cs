@@ -9,6 +9,7 @@
         <a href="https://www.mzk.cz">Moravská zemská knihovna</a> 
         za finanční podpory <a href="https://www.mkcr.cz/?lang=en">Ministerstva kultury České republiky</a>
         v rámci programu NAKI II na podporu aplikovaného výzkumu a vývoje národní a kulturní identity.
+        Výsledky projektu je možné si vyzkoušet v <a href="https://pero-ocr.fit.vutbr.cz/">PERO-OCR Aplikaci</a>.
     </p>
     <p>
         Cílem projektu je vytvořit technologie a nástroje, které zlepší a rozšíří přístupnost 
