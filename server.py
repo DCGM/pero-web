@@ -9,8 +9,9 @@ import os
 import language_helper
 import subprocess
 import json
+import os
 
-from flask import Flask, request, redirect, render_template_string, url_for
+from flask import Flask, request, redirect, render_template_string, url_for, send_from_directory
 from bmod import helper as bmod_helper
 from bmod.result import  Result, Status
 app = Flask(__name__)
@@ -22,6 +23,7 @@ from jinja2 import Environment, FileSystemLoader
 file_loader = FileSystemLoader(
         [os.path.join(os.path.dirname(__file__), "templates"),
          os.path.join(os.path.dirname(__file__), "posts"),
+         os.path.join(os.path.dirname(__file__), "docs"),
          os.path.join(os.path.dirname(__file__), "")])
 env = Environment(loader=file_loader)
 
@@ -41,6 +43,18 @@ def page_not_found(e):
 @app.route('/not_found')
 def not_found():
     return create_response("pages/not_found.html")
+
+
+@app.route('/doc')
+@app.route('/doc/')
+@app.route('/docs')
+def _docs():
+    return redirect("/docs/", code=302)
+
+@app.route('/docs/', defaults={'filename': 'index.html'})
+@app.route('/docs/<path:filename>')
+def docs(filename):
+    return send_from_directory('docs', filename)
 
 
 @app.route('/')
