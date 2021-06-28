@@ -12,8 +12,8 @@ from bmod.eval_result import  EvaluationResult
 
 def create_default_result_file(path):
     with open(path, "w") as f:
-        f.write("Baseline LSTM\tCNN_LSTM_CTC\t30.06.2019\t0.33\t1.93\t5.65\t22.39\t32.28\t72.63\t3.15\t10.71\n")
-        f.write("Baseline Conv\tCNN_CTC\t30.06.2019\t0.50\t2.79\t7.82\t28.50\t39.76\t80.69\t4.19\t13.39\n")
+        f.write("Baseline LSTM\tCNN-LSTM-CTC\t30.06.2019\t0.33\t1.93\t5.65\t22.39\t32.28\t72.63\t3.15\t10.71\n")
+        f.write("Baseline Conv\tCNN-CTC\t30.06.2019\t0.50\t2.79\t7.82\t28.50\t39.76\t80.69\t4.19\t13.39\n")
 
 
 def parse_results(path):
@@ -108,3 +108,35 @@ def check_name(evaluation_results: List[EvaluationResult], name, description):
             return False
 
     return True
+
+def highlight_best_result(results):
+    if results is None or len(results) == 0:
+        return
+
+    best_result_index = 0
+    for index, result in enumerate(results):
+        if float(result.cer_overall) < float(results[best_result_index].cer_overall):
+            best_result_index = index
+
+    update_results_appearance(results, best_result_index, "<b>", "</b>")
+
+    if results[0].name == "Baseline LSTM" and results[0].description == "CNN-LSTM-CTC":
+        update_results_appearance(results, 0, "<i>", "</i>")
+
+    if results[1].name == "Baseline Conv" and results[1].description == "CNN-CTC":
+        update_results_appearance(results, 1, "<i>", "</i>")
+
+
+def update_results_appearance(results, index, start_tag, end_tag):
+    results[index].name = f'{start_tag}{results[index].name}{end_tag}'
+    results[index].description = f'{start_tag}{results[index].description}{end_tag}'
+    results[index].date = f'{start_tag}{results[index].date}{end_tag}'
+    results[index].cer_easy = f'{start_tag}{results[index].cer_easy}{end_tag}'
+    results[index].wer_easy = f'{start_tag}{results[index].wer_easy}{end_tag}'
+    results[index].cer_medium = f'{start_tag}{results[index].cer_medium}{end_tag}'
+    results[index].wer_medium = f'{start_tag}{results[index].wer_medium}{end_tag}'
+    results[index].cer_hard = f'{start_tag}{results[index].cer_hard}{end_tag}'
+    results[index].wer_hard = f'{start_tag}{results[index].wer_hard}{end_tag}'
+    results[index].cer_overall = f'{start_tag}{results[index].cer_overall}{end_tag}'
+    results[index].wer_overall = f'{start_tag}{results[index].wer_overall}{end_tag}'
+

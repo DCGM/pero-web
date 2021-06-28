@@ -112,6 +112,7 @@ def brno_mobile_ocr_dataset():
 
 def brno_mobile_ocr_page(language=language_helper.Language.english):
     evaluation_results = bmod_helper.parse_results(configuration["brno_mobile_ocr_dataset"]["result_data"])
+    bmod_helper.highlight_best_result(evaluation_results)
 
     if request.method == 'POST':
         name = request.form["bmod_upload_name"]
