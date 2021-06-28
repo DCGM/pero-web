@@ -121,7 +121,7 @@ def highlight_best_result(results):
         except ValueError:
             continue
 
-        if best_result_index is None or cer_overall < results[best_result_index].cer_overall:
+        if best_result_index is None or cer_overall < float(results[best_result_index].cer_overall):
             best_result_index = index
 
     if best_result_index is not None:
