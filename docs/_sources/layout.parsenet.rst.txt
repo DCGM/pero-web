@@ -1,0 +1,29 @@
+layout.parsenet package
+=======================
+
+Submodules
+----------
+
+layout.parsenet.parse\_nets module
+----------------------------------
+
+.. automodule:: layout.parsenet.parse_nets
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+layout.parsenet.train module
+----------------------------
+
+.. automodule:: layout.parsenet.train
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: layout.parsenet
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,29 @@
+layout.orientationnet package
+=============================
+
+Submodules
+----------
+
+layout.orientationnet.orientation\_nets module
+----------------------------------------------
+
+.. automodule:: layout.orientationnet.orientation_nets
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+layout.orientationnet.train module
+----------------------------------
+
+.. automodule:: layout.orientationnet.train
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: layout.orientationnet
+   :members:
+   :undoc-members:
+   :show-inheritance:

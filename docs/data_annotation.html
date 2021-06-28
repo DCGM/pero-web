@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Annotating data for layout detector &mdash; PERO Layout training - documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Training and using layout detector" href="training_parsenet.html" />
+    <link rel="prev" title="PERO Layout training documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PERO Layout training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Annotating data for layout detector</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#layout-ground-truth-from-scratch">Layout ground truth from scratch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#layout-ground-truth-from-existing-page-xml">Layout ground truth from existing PAGE XML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#layout-ground-truth-from-external-data">Layout ground truth from external data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="training_parsenet.html">Training and using layout detector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_orientation.html">Multi-orientation documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="layout.html">layout package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PERO Layout training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Annotating data for layout detector</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/data_annotation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="annotating-data-for-layout-detector">
+<h1>Annotating data for layout detector<a class="headerlink" href="#annotating-data-for-layout-detector" title="Permalink to this headline">¶</a></h1>
+<p>Ground truth PAGE XML files can be created using the page_editor tool. Here are some basic examples of its
+usage. The editor uses drawing lines for making new lines/regions as well as selection of existing objects.
+A hint image with keyboard controls will be displayed upon running.</p>
+<div class="section" id="layout-ground-truth-from-scratch">
+<h2>Layout ground truth from scratch<a class="headerlink" href="#layout-ground-truth-from-scratch" title="Permalink to this headline">¶</a></h2>
+<p>When the editor is run with path to input images only, it will iterate over the image files and create a
+corresponding PAGE XML in the specified output path.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="s2">&quot;$</span><span class="si">{PERO_PATH}</span><span class="s2">/layout/page_editor.py&quot;</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="nb">input</span><span class="o">/</span><span class="n">images</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">output</span><span class="o">/</span><span class="n">pages</span> <span class="o">-</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>The -s flag tells the editor to skip images for which corresponding PAGE XML already exists in the
+output folder. Without it, the editor will go through all the images again, with the previously
+done layout annotation as a starting point.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Beware of overlapping regions which will result in duplicit lines.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using the editor tool will leave you with a folder of images and a folder of PAGE XMLs. You can use a simple shell script located in /mnt/matylda1/ikodym/pero/data/list_dataset.sh to convert them into a training file.</p>
+</div>
+</div>
+<div class="section" id="layout-ground-truth-from-existing-page-xml">
+<h2>Layout ground truth from existing PAGE XML<a class="headerlink" href="#layout-ground-truth-from-existing-page-xml" title="Permalink to this headline">¶</a></h2>
+<p>The editor can also load pre-existing PAGE XML files, for example imperfect outputs of a layout detector.
+If the output folder is not specified, the input PAGE XML files will be overwritten with the edited layout.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="s2">&quot;$</span><span class="si">{PERO_PATH}</span><span class="s2">/layout/page_editor.py&quot;</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="nb">input</span><span class="o">/</span><span class="n">images</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="nb">input</span><span class="o">/</span><span class="n">pages</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">output</span><span class="o">/</span><span class="n">pages</span> <span class="o">-</span><span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="layout-ground-truth-from-external-data">
+<h2>Layout ground truth from external data<a class="headerlink" href="#layout-ground-truth-from-external-data" title="Permalink to this headline">¶</a></h2>
+<p>Any valid PAGE XML should be compatible with pero except for the text line shape format. Text lines are usually
+specified by a baseline and a bounding polygon. In pero, text lines are specified by a baseline, ascender
+height and descender height in form of custom xml tags, from which the bounding polygon is then computed.
+If you want to use data from other sources such as Transkribus annotations directly for training, they can
+be converted (i. e. the heights are guessed from the polygons) automatically by resaving them using an “empty” run of parse_folder script in pero_ocr package.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="s2">&quot;$</span><span class="si">{PERO_OCR_PATH}</span><span class="s2">/user_scripts/parse_folder.py&quot;</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;./config_empty.ini&#39;</span> <span class="o">--</span><span class="nb">input</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">images</span> <span class="o">--</span><span class="nb">input</span><span class="o">-</span><span class="n">xml</span><span class="o">-</span><span class="n">path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">pages</span> <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">xml</span><span class="o">-</span><span class="n">path</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">output</span><span class="o">/</span><span class="n">pages</span>
+</pre></div>
+</div>
+<p>where the config_empy.ini looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">PAGE_PARSER</span><span class="p">]</span>
+<span class="n">RUN_LAYOUT_PARSER</span> <span class="o">=</span> <span class="n">no</span>
+<span class="n">RUN_LINE_CROPPER</span> <span class="o">=</span> <span class="n">no</span>
+<span class="n">RUN_OCR</span> <span class="o">=</span> <span class="n">no</span>
+<span class="n">RUN_DECODER</span> <span class="o">=</span> <span class="n">no</span>
+</pre></div>
+</div>
+<p>If you want to edit data from external sources with the editor, they will be converted automatically when loading
+them.</p>
+<p>If the text line polygons are wrong or missing in the data but the baselines are correct, you can let an existing
+layout detector predict the ascender and descender heights and create the polygons. You can specify this in the
+[LAYOUT_PARSER] section of the config as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DETECT_LINES</span> <span class="o">=</span> <span class="n">no</span>
+<span class="n">DETECT_REGIONS</span> <span class="o">=</span> <span class="n">no</span>
+<span class="n">ADJUST_HEIGHTS</span> <span class="o">=</span> <span class="n">yes</span>
+</pre></div>
+</div>
+<p>and then use the resulting PAGE XMLs for further annotation or training. An example of config that will use
+the latest model for height adjustment is in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">matylda1</span><span class="o">/</span><span class="n">ikodym</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">config_heights</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>External data format is often weird, for example sometimes the text line bounding polygon can be in form of a
+text region polygon. Once again, you can convert such data using the pero_ocr package by adding the following
+layout parser to config:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">LAYOUT_PARSER_2</span><span class="p">]</span>
+<span class="n">METHOD</span> <span class="o">=</span> <span class="n">LINE_POSTPROCESSING</span>
+<span class="n">HEIGHTS_FROM_REGIONS</span> <span class="o">=</span> <span class="n">yes</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="training_parsenet.html" class="btn btn-neutral float-right" title="Training and using layout detector" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="PERO Layout training documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Olda Kodym, Michal Hradiš.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

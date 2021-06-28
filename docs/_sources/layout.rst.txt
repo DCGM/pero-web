@@ -1,0 +1,70 @@
+layout package
+==============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   layout.orientationnet
+   layout.parsenet
+
+Submodules
+----------
+
+layout.augment\_imgaug module
+-----------------------------
+
+.. automodule:: layout.augment_imgaug
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+layout.comp\_ocr\_pipelines module
+----------------------------------
+
+.. automodule:: layout.comp_ocr_pipelines
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+layout.dataset module
+---------------------
+
+.. automodule:: layout.dataset
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+layout.eval\_ocr\_pipeline\_xml module
+--------------------------------------
+
+.. automodule:: layout.eval_ocr_pipeline_xml
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+layout.metrics module
+---------------------
+
+.. automodule:: layout.metrics
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+layout.page\_editor module
+--------------------------
+
+.. automodule:: layout.page_editor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: layout
+   :members:
+   :undoc-members:
+   :show-inheritance:

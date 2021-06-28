@@ -1,0 +1,75 @@
+Annotating data for layout detector
+===================================
+
+Ground truth PAGE XML files can be created using the page_editor tool. Here are some basic examples of its
+usage. The editor uses drawing lines for making new lines/regions as well as selection of existing objects.
+A hint image with keyboard controls will be displayed upon running.
+
+Layout ground truth from scratch
+--------------------------------
+
+When the editor is run with path to input images only, it will iterate over the image files and create a
+corresponding PAGE XML in the specified output path.
+::
+    python "${PERO_PATH}/layout/page_editor.py" -i /path/to/input/images -o /path/to/output/pages -s
+
+The -s flag tells the editor to skip images for which corresponding PAGE XML already exists in the
+output folder. Without it, the editor will go through all the images again, with the previously
+done layout annotation as a starting point.
+
+.. note:: Beware of overlapping regions which will result in duplicit lines.
+.. note:: Using the editor tool will leave you with a folder of images and a folder of PAGE XMLs. You can use a simple shell script located in /mnt/matylda1/ikodym/pero/data/list_dataset.sh to convert them into a training file.
+
+Layout ground truth from existing PAGE XML
+------------------------------------------
+
+The editor can also load pre-existing PAGE XML files, for example imperfect outputs of a layout detector.
+If the output folder is not specified, the input PAGE XML files will be overwritten with the edited layout.
+::
+    python "${PERO_PATH}/layout/page_editor.py" -i /path/to/input/images -p /path/to/input/pages -o /path/to/output/pages -s
+
+Layout ground truth from external data
+--------------------------------------
+
+Any valid PAGE XML should be compatible with pero except for the text line shape format. Text lines are usually
+specified by a baseline and a bounding polygon. In pero, text lines are specified by a baseline, ascender
+height and descender height in form of custom xml tags, from which the bounding polygon is then computed.
+If you want to use data from other sources such as Transkribus annotations directly for training, they can
+be converted (i. e. the heights are guessed from the polygons) automatically by resaving them using an "empty" run of parse_folder script in pero_ocr package. ::
+    python "${PERO_OCR_PATH}/user_scripts/parse_folder.py" -c './config_empty.ini' --input-image-path /path/to/images --input-xml-path /path/to/pages --output-xml-path /path/to/output/pages
+
+where the config_empy.ini looks like this:
+::
+    [PAGE_PARSER]
+    RUN_LAYOUT_PARSER = no
+    RUN_LINE_CROPPER = no
+    RUN_OCR = no
+    RUN_DECODER = no
+
+If you want to edit data from external sources with the editor, they will be converted automatically when loading
+them.
+
+If the text line polygons are wrong or missing in the data but the baselines are correct, you can let an existing
+layout detector predict the ascender and descender heights and create the polygons. You can specify this in the
+[LAYOUT_PARSER] section of the config as
+::
+    DETECT_LINES = no
+    DETECT_REGIONS = no
+    ADJUST_HEIGHTS = yes
+
+and then use the resulting PAGE XMLs for further annotation or training. An example of config that will use
+the latest model for height adjustment is in
+::
+    /mnt/matylda1/ikodym/configs/config_heights.ini
+
+External data format is often weird, for example sometimes the text line bounding polygon can be in form of a
+text region polygon. Once again, you can convert such data using the pero_ocr package by adding the following
+layout parser to config:
+::
+    [LAYOUT_PARSER_2]
+    METHOD = LINE_POSTPROCESSING
+    HEIGHTS_FROM_REGIONS = yes
+
+
+
+

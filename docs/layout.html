@@ -1,0 +1,904 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>layout package &mdash; PERO Layout training - documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="layout.orientationnet package" href="layout.orientationnet.html" />
+    <link rel="prev" title="Multi-orientation documents" href="multi_orientation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PERO Layout training
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="data_annotation.html">Annotating data for layout detector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training_parsenet.html">Training and using layout detector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi_orientation.html">Multi-orientation documents</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">layout package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="layout.orientationnet.html">layout.orientationnet package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="layout.parsenet.html">layout.parsenet package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-layout.augment_imgaug">layout.augment_imgaug module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-layout.comp_ocr_pipelines">layout.comp_ocr_pipelines module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-layout.dataset">layout.dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-layout.eval_ocr_pipeline_xml">layout.eval_ocr_pipeline_xml module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-layout.metrics">layout.metrics module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-layout.page_editor">layout.page_editor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-layout">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PERO Layout training</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>layout package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/layout.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="layout-package">
+<h1>layout package<a class="headerlink" href="#layout-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="layout.orientationnet.html">layout.orientationnet package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="layout.orientationnet.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layout.orientationnet.html#module-layout.orientationnet.orientation_nets">layout.orientationnet.orientation_nets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layout.orientationnet.html#module-layout.orientationnet.train">layout.orientationnet.train module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layout.orientationnet.html#module-layout.orientationnet">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="layout.parsenet.html">layout.parsenet package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="layout.parsenet.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layout.parsenet.html#module-layout.parsenet.parse_nets">layout.parsenet.parse_nets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layout.parsenet.html#module-layout.parsenet.train">layout.parsenet.train module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layout.parsenet.html#module-layout.parsenet">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-layout.augment_imgaug">
+<span id="layout-augment-imgaug-module"></span><h2>layout.augment_imgaug module<a class="headerlink" href="#module-layout.augment_imgaug" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="layout.augment_imgaug.GeometricTransform">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">layout.augment_imgaug.</span></span><span class="sig-name descname"><span class="pre">GeometricTransform</span></span><a class="headerlink" href="#layout.augment_imgaug.GeometricTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract class implements all checks needed when geometric transform is applied to
+page layout (remove regions out of bounds, intersect regions partly out of bounds with page, …).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.augment_imgaug.GeometricTransform.get_line_endpoints">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">get_line_endpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">shapely.geometry.linestring.LineString</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">shapely.geometry.point.Point</span><span class="p"><span class="pre">,</span> </span><span class="pre">shapely.geometry.point.Point</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#layout.augment_imgaug.GeometricTransform.get_line_endpoints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.augment_imgaug.GeometricTransform.intersect_polygon">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">intersect_polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polygon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">shapely.geometry.polygon.Polygon</span><span class="p"><span class="pre">,</span> </span><span class="pre">shapely.geometry.linestring.LineString</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">shapely.geometry.polygon.Polygon</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.augment_imgaug.GeometricTransform.intersect_polygon" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="layout.augment_imgaug.GeometricTransform.recreate_region_bounds">
+<em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">recreate_region_bounds</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#layout.augment_imgaug.GeometricTransform.recreate_region_bounds" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>recreate region polygon as bounding box around lines if true,</dt><dd><p>otherwise transform it just as line polygons</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.augment_imgaug.GeometricTransform.transform_line">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">transform_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">shapely.geometry.linestring.LineString</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">shapely.geometry.linestring.LineString</span><a class="headerlink" href="#layout.augment_imgaug.GeometricTransform.transform_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.augment_imgaug.GeometricTransform.transform_page_layout">
+<span class="sig-name descname"><span class="pre">transform_page_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pero_ocr.document_ocr.layout.PageLayout</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.augment_imgaug.GeometricTransform.transform_page_layout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.augment_imgaug.GeometricTransform.transform_page_layout_safe">
+<span class="sig-name descname"><span class="pre">transform_page_layout_safe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pero_ocr.document_ocr.layout.PageLayout</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_page</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.augment_imgaug.GeometricTransform.transform_page_layout_safe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Safer version of transform_page_layout, which clips all polygons and lines into page
+and edits transcripts to fit into page. Also checks if result of cropping is a polygon,
+and deletes polygon if it’s outside of page boundaries.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.augment_imgaug.GeometricTransform.transform_region">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">transform_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">shapely.geometry.polygon.Polygon</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">shapely.geometry.polygon.Polygon</span><a class="headerlink" href="#layout.augment_imgaug.GeometricTransform.transform_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="layout.augment_imgaug.InvalidGeometryException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">layout.augment_imgaug.</span></span><span class="sig-name descname"><span class="pre">InvalidGeometryException</span></span><a class="headerlink" href="#layout.augment_imgaug.InvalidGeometryException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="layout.augment_imgaug.InvalidXmlException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">layout.augment_imgaug.</span></span><span class="sig-name descname"><span class="pre">InvalidXmlException</span></span><a class="headerlink" href="#layout.augment_imgaug.InvalidXmlException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="layout.augment_imgaug.MotionBlur">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">layout.augment_imgaug.</span></span><span class="sig-name descname"><span class="pre">MotionBlur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">min_res=10</span></em>, <em class="sig-param"><span class="pre">max_res=15</span></em>, <em class="sig-param"><span class="pre">rng=&lt;module</span> <span class="pre">'numpy.random'</span> <span class="pre">from</span> <span class="pre">'/home/ikodym/tf_env/lib/python3.6/site-packages/numpy/random/__init__.py'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.augment_imgaug.MotionBlur" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.augment_imgaug.MotionBlur.ewma">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">ewma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">halflife</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.augment_imgaug.MotionBlur.ewma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the exponential moving average over a vector.
+Will fail for large inputs.</p>
+<p>Source: <a class="reference external" href="https://stackoverflow.com/questions/42869495/numpy-version-of-exponential-weighted-moving-average-equivalent-to-pandas-ewm">https://stackoverflow.com/questions/42869495/numpy-version-of-exponential-weighted-moving-average-equivalent-to-pandas-ewm</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Input data</p></li>
+<li><p><strong>alpha</strong> – scalar float in range (0,1)
+The alpha parameter for the moving average.</p></li>
+<li><p><strong>offset</strong> – optional
+The offset for the moving average, scalar. Defaults to data[0].</p></li>
+<li><p><strong>dtype</strong> – optional
+Data type used for calculations. Defaults to float64 unless
+data.dtype is float32, then it will use float32.</p></li>
+<li><p><strong>order</strong> – {‘C’, ‘F’, ‘A’}, optional
+Order to use when flattening the data. Defaults to ‘C’.</p></li>
+<li><p><strong>out</strong> – ndarray, or None, optional
+A location into which the result is stored. If provided, it must have
+the same shape as the input. If not provided or <cite>None</cite>,
+a freshly-allocated array is returned.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.augment_imgaug.MotionBlur.get_kernel">
+<span class="sig-name descname"><span class="pre">get_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">halflife</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.augment_imgaug.MotionBlur.get_kernel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="layout.augment_imgaug.NormalizeLines">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">layout.augment_imgaug.</span></span><span class="sig-name descname"><span class="pre">NormalizeLines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">height_mean</span></em>, <em class="sig-param"><span class="pre">height_std</span></em>, <em class="sig-param"><span class="pre">rng=&lt;module</span> <span class="pre">'numpy.random'</span> <span class="pre">from</span> <span class="pre">'/home/ikodym/tf_env/lib/python3.6/site-packages/numpy/random/__init__.py'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.augment_imgaug.NormalizeLines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#layout.augment_imgaug.GeometricTransform" title="layout.augment_imgaug.GeometricTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">layout.augment_imgaug.GeometricTransform</span></code></a></p>
+<p>Lines have to be normalized separately because of dependency between imaage and point transformation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.augment_imgaug.NormalizeLines.get_line_height_median">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">get_line_height_median</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.augment_imgaug.NormalizeLines.get_line_height_median" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="layout.augment_imgaug.NormalizeLines.recreate_region_bounds">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">recreate_region_bounds</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#layout.augment_imgaug.NormalizeLines.recreate_region_bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>recreate region polygon as bounding box around lines if true,
+otherwise transform it just as line polygons</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.augment_imgaug.NormalizeLines.transform_line">
+<span class="sig-name descname"><span class="pre">transform_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">shapely.geometry.linestring.LineString</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">shapely.geometry.linestring.LineString</span><a class="headerlink" href="#layout.augment_imgaug.NormalizeLines.transform_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.augment_imgaug.NormalizeLines.transform_region">
+<span class="sig-name descname"><span class="pre">transform_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">shapely.geometry.polygon.Polygon</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">shapely.geometry.polygon.Polygon</span><a class="headerlink" href="#layout.augment_imgaug.NormalizeLines.transform_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="layout.augment_imgaug.RandomWalkMotionBlur">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">layout.augment_imgaug.</span></span><span class="sig-name descname"><span class="pre">RandomWalkMotionBlur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">min_res=10</span></em>, <em class="sig-param"><span class="pre">max_res=15</span></em>, <em class="sig-param"><span class="pre">rng=&lt;module</span> <span class="pre">'numpy.random'</span> <span class="pre">from</span> <span class="pre">'/home/ikodym/tf_env/lib/python3.6/site-packages/numpy/random/__init__.py'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.augment_imgaug.RandomWalkMotionBlur" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#layout.augment_imgaug.MotionBlur" title="layout.augment_imgaug.MotionBlur"><code class="xref py py-class docutils literal notranslate"><span class="pre">layout.augment_imgaug.MotionBlur</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.augment_imgaug.get_args">
+<span class="sig-prename descclassname"><span class="pre">layout.augment_imgaug.</span></span><span class="sig-name descname"><span class="pre">get_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.augment_imgaug.get_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.augment_imgaug.main">
+<span class="sig-prename descclassname"><span class="pre">layout.augment_imgaug.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.augment_imgaug.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.augment_imgaug.polygon_correction">
+<span class="sig-prename descclassname"><span class="pre">layout.augment_imgaug.</span></span><span class="sig-name descname"><span class="pre">polygon_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pero_ocr.document_ocr.layout.PageLayout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_polygons</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">shapely.geometry.polygon.Polygon</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_polygons</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">shapely.geometry.polygon.Polygon</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_baselines</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">shapely.geometry.linestring.LineString</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">pero_ocr.document_ocr.layout.PageLayout</span><a class="headerlink" href="#layout.augment_imgaug.polygon_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used for deleting polygons / lines outside of page and cropping polygons / pages
+to fit inside page.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-layout.comp_ocr_pipelines">
+<span id="layout-comp-ocr-pipelines-module"></span><h2>layout.comp_ocr_pipelines module<a class="headerlink" href="#module-layout.comp_ocr_pipelines" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.comp_ocr_pipelines.get_bar_positions_and_widths">
+<span class="sig-prename descclassname"><span class="pre">layout.comp_ocr_pipelines.</span></span><span class="sig-name descname"><span class="pre">get_bar_positions_and_widths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_bars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_groups</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.comp_ocr_pipelines.get_bar_positions_and_widths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.comp_ocr_pipelines.main">
+<span class="sig-prename descclassname"><span class="pre">layout.comp_ocr_pipelines.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.comp_ocr_pipelines.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.comp_ocr_pipelines.parse_arguments">
+<span class="sig-prename descclassname"><span class="pre">layout.comp_ocr_pipelines.</span></span><span class="sig-name descname"><span class="pre">parse_arguments</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.comp_ocr_pipelines.parse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.comp_ocr_pipelines.plot_bars">
+<span class="sig-prename descclassname"><span class="pre">layout.comp_ocr_pipelines.</span></span><span class="sig-name descname"><span class="pre">plot_bars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_ticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">14</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.comp_ocr_pipelines.plot_bars" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-layout.dataset">
+<span id="layout-dataset-module"></span><h2>layout.dataset module<a class="headerlink" href="#module-layout.dataset" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="layout.dataset.OrientationnetDatasetOnline">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">layout.dataset.</span></span><span class="sig-name descname"><span class="pre">OrientationnetDatasetOnline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_img_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_page_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_masks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_img_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_page_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.dataset.OrientationnetDatasetOnline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Provides fast loading of batches with image and rendered orientation map crops.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_img_paths</strong> – List with paths to training images.</p></li>
+<li><p><strong>train_page_paths</strong> – List with paths to training PAGE XMLs.</p></li>
+<li><p><strong>train_masks</strong> – List of annotation masks (3 bools for layout, baseline, height annotation)</p></li>
+<li><p><strong>test_img_paths</strong> – List with paths to testing images.</p></li>
+<li><p><strong>test_page_paths</strong> – List with paths to testing PAGE XMLs.</p></li>
+<li><p><strong>patch_size</strong> – Training patch size in pixels, default=256.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.dataset.OrientationnetDatasetOnline.get_batch">
+<span class="sig-name descname"><span class="pre">get_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.dataset.OrientationnetDatasetOnline.get_batch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads multiple samples into batch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_size</strong> – Batch size.</p></li>
+<li><p><strong>data</strong> – Data source (train/test).</p></li>
+<li><p><strong>seed</strong> – Seed for RNG, providing the same seed will result in indentical batch.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array with data, array with orientation maps (first channel is binary mask), array with annotation masks.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.dataset.OrientationnetDatasetOnline.load_sample">
+<span class="sig-name descname"><span class="pre">load_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.dataset.OrientationnetDatasetOnline.load_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load image and orientation map from img and pagexml file. Only loads random patch with size of patch_size without
+uselessly rendering surrounding layout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img_path</strong> – Path to image file.</p></li>
+<li><p><strong>page_path</strong> – Path to PAGE XML file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Image crop, layout maps crop.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="layout.dataset.ParsenetDatasetOnline">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">layout.dataset.</span></span><span class="sig-name descname"><span class="pre">ParsenetDatasetOnline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_img_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_page_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_masks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_img_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_page_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.dataset.ParsenetDatasetOnline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Provides fast loading of batches with image and rendered layout map crops.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_img_paths</strong> – List with paths to training images.</p></li>
+<li><p><strong>train_page_paths</strong> – List with paths to training PAGE XMLs.</p></li>
+<li><p><strong>test_img_paths</strong> – List with paths to testing images.</p></li>
+<li><p><strong>test_page_paths</strong> – List with paths to testing PAGE XMLs.</p></li>
+<li><p><strong>patch_size</strong> – Training patch size in pixels, default=256.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.dataset.ParsenetDatasetOnline.get_batch">
+<span class="sig-name descname"><span class="pre">get_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vert_prob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.dataset.ParsenetDatasetOnline.get_batch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads multiple samples into batch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_size</strong> – Batch size.</p></li>
+<li><p><strong>data</strong> – Data source (train/test)</p></li>
+<li><p><strong>seed</strong> – Seed for RNG, providing the same seed will result in indentical batch.</p></li>
+<li><p><strong>vert_prob</strong> – Probability of rotating a batch sample by 90 deg (useful for cBAD dataset).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array with data, array with layout maps, array with annotation masks.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.dataset.ParsenetDatasetOnline.load_sample">
+<span class="sig-name descname"><span class="pre">load_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vert</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.dataset.ParsenetDatasetOnline.load_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load random image patch and render the corresponding layout. Ignores non-horizontal lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img_path</strong> – Path to image file.</p></li>
+<li><p><strong>page_path</strong> – Path to PAGE XML file.</p></li>
+<li><p><strong>vert</strong> – Boolean indicating whether data should be tilted 90 clockwise (useful for cBAD models due to         their specific data distribution).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Image crop, layout maps crop.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-layout.eval_ocr_pipeline_xml">
+<span id="layout-eval-ocr-pipeline-xml-module"></span><h2>layout.eval_ocr_pipeline_xml module<a class="headerlink" href="#module-layout.eval_ocr_pipeline_xml" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.eval_ocr_pipeline_xml.create_dir_if_not_exists">
+<span class="sig-prename descclassname"><span class="pre">layout.eval_ocr_pipeline_xml.</span></span><span class="sig-name descname"><span class="pre">create_dir_if_not_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.eval_ocr_pipeline_xml.create_dir_if_not_exists" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.eval_ocr_pipeline_xml.eval_page">
+<span class="sig-prename descclassname"><span class="pre">layout.eval_ocr_pipeline_xml.</span></span><span class="sig-name descname"><span class="pre">eval_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gt_layout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_layout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_mapping_cer_difference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_img_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_img_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.eval_ocr_pipeline_xml.eval_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares two PAGE layouts and returns counts of correctly detected lines/chars and various types of errors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gt_layout</strong> – Reference PAGE XML layout.</p></li>
+<li><p><strong>input_layout</strong> – Evaluated PAGE XML layout.</p></li>
+<li><p><strong>max_mapping_cer_difference</strong> – Threshold for good transcription of a line.</p></li>
+<li><p><strong>in_img_path</strong> – Optional, path to input image to draw results</p></li>
+<li><p><strong>out_img_path</strong> – Optional, path to save drawn results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dictionary containing result counts.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.eval_ocr_pipeline_xml.main">
+<span class="sig-prename descclassname"><span class="pre">layout.eval_ocr_pipeline_xml.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.eval_ocr_pipeline_xml.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.eval_ocr_pipeline_xml.map_lines">
+<span class="sig-prename descclassname"><span class="pre">layout.eval_ocr_pipeline_xml.</span></span><span class="sig-name descname"><span class="pre">map_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_layout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gt_layout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.eval_ocr_pipeline_xml.map_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute mapping of GT lines to input lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_layout</strong> – input page layout</p></li>
+<li><p><strong>gt_layout</strong> – gt page layout</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>lines as list of [line, region, pos_in_region] and mapping matrix (first index is GT line, second is input line id)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.eval_ocr_pipeline_xml.parse_arguments">
+<span class="sig-prename descclassname"><span class="pre">layout.eval_ocr_pipeline_xml.</span></span><span class="sig-name descname"><span class="pre">parse_arguments</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.eval_ocr_pipeline_xml.parse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-layout.metrics">
+<span id="layout-metrics-module"></span><h2>layout.metrics module<a class="headerlink" href="#module-layout.metrics" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.metrics.check_poly">
+<span class="sig-prename descclassname"><span class="pre">layout.metrics.</span></span><span class="sig-name descname"><span class="pre">check_poly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poly</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.metrics.check_poly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fixes polygon if its invalid by replacing it with its convex hull.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>poly</strong> – Input polygon</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Valid polygon</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.metrics.compute_PRF">
+<span class="sig-prename descclassname"><span class="pre">layout.metrics.</span></span><span class="sig-name descname"><span class="pre">compute_PRF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">o2o</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.metrics.compute_PRF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes precision, recall and F value for object match counts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>M</strong> – Number of ground true objects.</p></li>
+<li><p><strong>N</strong> – Number of detected objects.</p></li>
+<li><p><strong>o2o</strong> – Number of one-on-one matched objects.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Precision, recall, F-value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.metrics.count_lines">
+<span class="sig-prename descclassname"><span class="pre">layout.metrics.</span></span><span class="sig-name descname"><span class="pre">count_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page_gt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">o2o_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.metrics.count_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes line match counts for calculation of precision, recall and F-value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>page_gt</strong> – Ground truth layout.</p></li>
+<li><p><strong>page_pred</strong> – Detected layout.</p></li>
+<li><p><strong>o2o_threshold</strong> – IoU threshold</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Numbers of ground truth objects, number of detected objects, number of one-on-one matches.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.metrics.count_regions">
+<span class="sig-prename descclassname"><span class="pre">layout.metrics.</span></span><span class="sig-name descname"><span class="pre">count_regions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page_gt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">o2o_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.metrics.count_regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes region match counts for calculation of precision, recall and F-value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>page_gt</strong> – Ground truth layout.</p></li>
+<li><p><strong>page_pred</strong> – Detected layout.</p></li>
+<li><p><strong>o2o_threshold</strong> – IoU threshold</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Numbers of ground truth objects, number of detected objects, number of one-on-one matches.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.metrics.find_matches">
+<span class="sig-prename descclassname"><span class="pre">layout.metrics.</span></span><span class="sig-name descname"><span class="pre">find_matches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poly_list_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_list_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.7</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.metrics.find_matches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes one-on-one matched objects at specified overlap threshold.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>poly_list_1</strong> – List of ground truth polygons.</p></li>
+<li><p><strong>poly_list_2</strong> – List of detected polygons.</p></li>
+<li><p><strong>T</strong> – IoU threshold</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Number of one-on-one matches</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.metrics.get_fvalue">
+<span class="sig-prename descclassname"><span class="pre">layout.metrics.</span></span><span class="sig-name descname"><span class="pre">get_fvalue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout_gt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.metrics.get_fvalue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes PAGE f-value for baselines using transkribus eval tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layout_gt</strong> – Ground truth layout.</p></li>
+<li><p><strong>layout_pred</strong> – Target predicted layout.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>PAGE f-value..</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.metrics.get_line_bsd">
+<span class="sig-prename descclassname"><span class="pre">layout.metrics.</span></span><span class="sig-name descname"><span class="pre">get_line_bsd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout_gt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.metrics.get_line_bsd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes best symmetric Dice between text lines of two layouts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layout_gt</strong> – Ground truth layout.</p></li>
+<li><p><strong>layout_pred</strong> – Target predicted layout.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Average best symmetric Dice over all text lines.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.metrics.get_poly_iou">
+<span class="sig-prename descclassname"><span class="pre">layout.metrics.</span></span><span class="sig-name descname"><span class="pre">get_poly_iou</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poly_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.metrics.get_poly_iou" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.metrics.get_region_bsd">
+<span class="sig-prename descclassname"><span class="pre">layout.metrics.</span></span><span class="sig-name descname"><span class="pre">get_region_bsd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout_gt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layout_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.metrics.get_region_bsd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes best symmetric Dice between regions of two layouts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layout_gt</strong> – Ground truth layout.</p></li>
+<li><p><strong>layout_pred</strong> – Target predicted layout.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Average best symmetric Dice over all regions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.metrics.main">
+<span class="sig-prename descclassname"><span class="pre">layout.metrics.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.metrics.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.metrics.parse_arguments">
+<span class="sig-prename descclassname"><span class="pre">layout.metrics.</span></span><span class="sig-name descname"><span class="pre">parse_arguments</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.metrics.parse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.metrics.transkribus_eval">
+<span class="sig-prename descclassname"><span class="pre">layout.metrics.</span></span><span class="sig-name descname"><span class="pre">transkribus_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">truth_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.metrics.transkribus_eval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-layout.page_editor">
+<span id="layout-page-editor-module"></span><h2>layout.page_editor module<a class="headerlink" href="#module-layout.page_editor" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="layout.page_editor.MouseEditorCallback">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">layout.page_editor.</span></span><span class="sig-name descname"><span class="pre">MouseEditorCallback</span></span><a class="headerlink" href="#layout.page_editor.MouseEditorCallback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.MouseEditorCallback.callback">
+<span class="sig-name descname"><span class="pre">callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.MouseEditorCallback.callback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.MouseEditorCallback.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.MouseEditorCallback.clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.MouseEditorCallback.del_point">
+<span class="sig-name descname"><span class="pre">del_point</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.MouseEditorCallback.del_point" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.MouseEditorCallback.get_remaining_points">
+<span class="sig-name descname"><span class="pre">get_remaining_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.MouseEditorCallback.get_remaining_points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.MouseEditorCallback.get_selection_points">
+<span class="sig-name descname"><span class="pre">get_selection_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.MouseEditorCallback.get_selection_points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">layout.page_editor.</span></span><span class="sig-name descname"><span class="pre">PageEditor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">downsample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_hint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.annotate">
+<span class="sig-name descname"><span class="pre">annotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page_image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_layout</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.annotate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.clear_interaction">
+<span class="sig-name descname"><span class="pre">clear_interaction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.clear_interaction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.create_line">
+<span class="sig-name descname"><span class="pre">create_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.create_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.create_region">
+<span class="sig-name descname"><span class="pre">create_region</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.create_region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.create_region_from_lines">
+<span class="sig-name descname"><span class="pre">create_region_from_lines</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.create_region_from_lines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.remove_selected_lines">
+<span class="sig-name descname"><span class="pre">remove_selected_lines</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.remove_selected_lines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.remove_selected_regions">
+<span class="sig-name descname"><span class="pre">remove_selected_regions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.remove_selected_regions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.render" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.render_selected_elements">
+<span class="sig-name descname"><span class="pre">render_selected_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.render_selected_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.select_layout_elements">
+<span class="sig-name descname"><span class="pre">select_layout_elements</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.select_layout_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.sync_all_heights">
+<span class="sig-name descname"><span class="pre">sync_all_heights</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.sync_all_heights" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.sync_line_heights">
+<span class="sig-name descname"><span class="pre">sync_line_heights</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.sync_line_heights" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.update_layout">
+<span class="sig-name descname"><span class="pre">update_layout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.update_layout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="layout.page_editor.PageEditor.update_selected_lines">
+<span class="sig-name descname"><span class="pre">update_selected_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.PageEditor.update_selected_lines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.page_editor.check_intersection">
+<span class="sig-prename descclassname"><span class="pre">layout.page_editor.</span></span><span class="sig-name descname"><span class="pre">check_intersection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.check_intersection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.page_editor.get_region_by_point">
+<span class="sig-prename descclassname"><span class="pre">layout.page_editor.</span></span><span class="sig-name descname"><span class="pre">get_region_by_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regions_coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.get_region_by_point" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.page_editor.main">
+<span class="sig-prename descclassname"><span class="pre">layout.page_editor.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.page_editor.parse_arguments">
+<span class="sig-prename descclassname"><span class="pre">layout.page_editor.</span></span><span class="sig-name descname"><span class="pre">parse_arguments</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.parse_arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.page_editor.resample_layout">
+<span class="sig-prename descclassname"><span class="pre">layout.page_editor.</span></span><span class="sig-name descname"><span class="pre">resample_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page_layout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.resample_layout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="layout.page_editor.select_polygons">
+<span class="sig-prename descclassname"><span class="pre">layout.page_editor.</span></span><span class="sig-name descname"><span class="pre">select_polygons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polygon_coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#layout.page_editor.select_polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-layout">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-layout" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="layout.orientationnet.html" class="btn btn-neutral float-right" title="layout.orientationnet package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="multi_orientation.html" class="btn btn-neutral float-left" title="Multi-orientation documents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Olda Kodym, Michal Hradiš.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

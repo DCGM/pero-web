@@ -1,0 +1,54 @@
+Multi-orientation documents
+===========================
+
+Basic layout detection does not support lines that are not horizontal. This is a step-by-step guide to
+train and use a text orientation estimation model that can be used to detect vertical text as well, as
+described in https://arxiv.org/abs/2102.11838.
+
+Data preparation
+----------------
+
+Orientation model uses identical data with ParseNet but with more rotational augmentation:.
+::
+    python "${PERO_PATH}/layout/augment_imgaug.py" --list path/to/file/list --output-path /path/to/output -c 50 --rotation 120 --motion-blur False --defocus-blur False
+
+Model training
+--------------
+
+Orientation detector model definition and training scripts can be found in :py:mod:`layout.orientationnet`
+and everything is generally very similar to parsenet. The training can be run using
+::
+    python "${PERO_PATH}/layout/orientationnet/train.py" --trn-data "/path/to/files.lst" --tst-data "/path/to/test_files.lst" -o /path/to/output --start-iteration 1 --max-iteration 100000 --view-step 5000 --detection-net 'detection_UNet_3s_3_32' --attention-net 'attention_UNet_3s_3_16' --batch-size 6 --patch-size 256 -g 0
+
+One difference is that there is currently no metric to measure performance so only loss graphs and renders
+of the resulting orientation detection of the test data under different orientations are saved. After the
+training, the final frozen model is in
+::
+    /path/to/output/model/OrientationNet.pt
+
+Model inference
+---------------
+
+Multi-orientation layout is first detected three times. Original, rotated 90 degrees left and rotated 90 degrees right.
+Results of all these detections are then combined. This is done by setting the config layout_parser section:
+::
+    MULTI_ORIENTATION = yes
+
+Because this results in duplicit detections, the next step is to filter the detected objects using the orientation
+model which only keeps the objects detected under the correct rotation. This is done by adding the following layout
+parse:
+::
+    [LAYOUT_PARSER_2]
+    METHOD = LINE_FILTER
+
+    FRAMEWORK = torch
+    MODEL_PATH = /mnt/matylda1/ikodym/pero/OrientationNet_torch/output/model/OrientationNet.pt
+    USE_CPU = no
+
+    FILTER_DIRECTIONS = yes
+
+Both steps are done in single parse_folder run. An example config for running multi-orientation layout detection
+using the latest models can be found in
+::
+    /mnt/matylda1/ikodym/configs/config_torch_multiorientation.ini
+

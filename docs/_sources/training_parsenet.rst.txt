@@ -1,0 +1,77 @@
+Training and using layout detector
+==================================
+
+This is a minimal step-by-step guide on training and using the torch implemention of ParseNet layout
+detection models, based on https://arxiv.org/abs/2102.11838. The training pipeline has dependencies on pero-ocr package
+so make sure to export it to PYTHONPATH.
+
+A complete example of scripts running augmentation and training on the "universal" dataset as well as
+the regression testing pipeline can be found in
+::
+    /mnt/matylda1/ikodym/pero/ParseNet_torch
+
+Data preparation
+----------------
+
+The training data are pairs of an image file and a corresponding PAGE XML file.
+The training script expects the data as a file where each line contains paths to image and page xml and an annotation
+mask separated by \\t, such as
+::
+    /path/to/image.jpg  /path/to/page.xml   111
+
+The annotation mask marks which annotations are available in the PAGE XML: text height annotations,
+text baselines annotations, and text blocks annotations. So a file where only text baselines are available
+(for example cBAD samples) would have mask 010.
+An example training data file can be found in
+::
+    /mnt/matylda1/ikodym/pero/ParseNet_torch/comb.trn
+
+First, the data should be augmented before training using the :py:mod:`layout.augment_imgaug`. It takes the training
+file list as an input and generates the desired number of augmented image-pagexml pairs in the target output folder.
+It additionally generates a files.lst file which preserves the annotation masks and can then be used direcly for
+training. To generate 50 augmented image-layout pairs per sample, run
+::
+    python "${PERO_PATH}/layout/augment_imgaug.py" --list path/to/file/list --output-path /path/to/output -c 50 --motion-blur False --defocus-blur False
+
+The resulting training file will be located in /path/to/output/files.lst. You can check the augmented images
+and tune the augmentation parameters.
+
+Model training
+--------------
+
+Layout detector model definition and training scripts can be found in :py:mod:`layout.parsenet`. The training
+script handles online data loading and layout maps rendering using :py:mod:`layout.dataset`. During training,
+loss values and several metrics implemented in :py:mod:`layout.metrics` are saved periodically.
+An example of running layout training is
+::
+    python "${PERO_PATH}/layout/parsenet/train.py" --trn-data "/path/to/files.lst" --tst-data "/path/to/test_files.lst" -o /path/to/output --start-iteration 1 --max-iteration 300000 --view-step 5000 --detection-net 'detection_UNet_3s_3_32' --attention-net 'attention_UNet_3s_3_16' --batch-size 6 --patch-size 256 -g 0
+
+The --view-step argument tells the script how often to save the model checkpoint and logs. During each model saving,
+a frozen version is also saved. If training is interrupted or if you want to fine-tune a trained model on different
+data, just change the --start-teration argument to the last saved iteration. The --detection-net and --attention-net
+arguments should be one of the pre-defined architectures that can be found in :py:mod:`layout.parsenet.parse_nets`.
+They can also be easily extended to experiment with different model depths.
+Afted the training, the final frozen model is in
+::
+    /path/to/output/model/ParseNet.pt
+
+Model inference
+---------------
+
+Layout extraction is done using the pero-ocr package. Extracting PAGE XML and rendered layouts from some image files using
+a basic configuration file would look like this
+::
+    python "${PERO_OCR_PATH}/user_scripts/parse_folder.py" -c '/mnt/matylda1/ikodym/configs/config_torch.ini' --input-image-path /path/to/input/images --output-xml-path /path/to/output/pagexmls --output-render-path /path/to/output/renders
+
+.. note::
+    Make sure you change the path to the layout model in the config file. The rest of the config doesn't need to be changed.
+
+Regression testing
+------------------
+
+It's not easy to make sure that a new layout model performance doesn't drop on any type of input image. There is
+an evaluation pipeline that compares the resulting layout and OCR output to a reference. Comparing these outputs of
+two models can show how they compare to each other even if the reference is not perfect. For an example on how to
+run the evaluation pipeline, refer to
+::
+    /mnt/matylda1/ikodym/pero/ocr_pipeline_eval/compare_model.sh
