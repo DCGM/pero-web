@@ -113,12 +113,19 @@ def highlight_best_result(results):
     if results is None or len(results) == 0:
         return
 
-    best_result_index = 0
+    best_result_index = None
+
     for index, result in enumerate(results):
-        if float(result.cer_overall) < float(results[best_result_index].cer_overall):
+        try:
+            cer_overall = float(result.cer_overall)
+        except ValueError:
+            continue
+
+        if best_result_index is None or cer_overall < results[best_result_index].cer_overall:
             best_result_index = index
 
-    update_results_appearance(results, best_result_index, "<b>", "</b>")
+    if best_result_index is not None:
+        update_results_appearance(results, best_result_index, "<b>", "</b>")
 
     if results[0].name == "Baseline LSTM" and results[0].description == "CNN-LSTM-CTC":
         update_results_appearance(results, 0, "<i>", "</i>")
