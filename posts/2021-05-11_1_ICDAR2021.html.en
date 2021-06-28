@@ -1,0 +1,20 @@
+{% extends 'template.html.en' %}
+
+{% block header %}
+    Papers submitted to ICDAR 2021
+{% endblock %}
+
+{% block perex %}
+    <p>
+		In September 2021, the <a href="https://icdar2021.org/">16th International Conference on Document Analysis and Recognition<a> (ICDAR) will take place in Lausanne, Switzerland.
+        As part of the PERO project, we sent three papers to this conference and all them were also accepted.
+    </p>
+{% endblock %}
+
+{% block content %}
+    <p>
+        The first article deals with <a href="https://arxiv.org/abs/2102.11838v1">text line detection using a neural network model called ParseNet</a>.
+        The second article focuses on the <a href="https://arxiv.org/abs/2103.05489">ability to switch between different outputs of a neural network-based text recognizer using a Transcription-Style block</a>.
+        The last article presents a <a href="https://arxiv.org/abs/2104.13037">strategy for effective use of large amounts of unannotated data from a target domain</a> when training a text recognizer.
+    </p>
+{% endblock %}
