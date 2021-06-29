@@ -6,8 +6,8 @@
 
 {% block perex %}
     <p>
-		In September 2021, the <a href="https://icdar2021.org/">16th International Conference on Document Analysis and Recognition<a> (ICDAR) will take place in Lausanne, Switzerland.
-        As part of the PERO project, we sent three papers to this conference and all them were also accepted.
+        In September 2021, the <a href="https://icdar2021.org/">16th International Conference on Document Analysis and Recognition<a> (ICDAR) will take place in Lausanne, Switzerland.
+        For the PERO project, we sent three papers to this conference and all them were also accepted.
     </p>
 {% endblock %}
 
