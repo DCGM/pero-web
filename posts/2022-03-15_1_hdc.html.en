@@ -1,0 +1,20 @@
+{% extends 'template.html.en' %}
+
+{% block header %}
+    Historical document classification
+{% endblock %}
+
+{% block perex %}
+    <p>
+        We not only participated in the <a href="https://icdar2021.org/">ICDAR 2021</a> conference with our <a href="/post/2021-05-11_1_ICDAR2021">published papers</a>, but we also participated in a <a href="https://lme.tf.fau.de/competitions/icdar-2021-competition-on-historical-document-classification/">competition on historical document classification</a>.
+        The competition consisted of three tasks: font/script classification, document localization and dating.
+        In all three tasks, our system took first place and we won the whole competition.
+    </p>
+{% endblock %}
+
+{% block content %}
+    <p>
+        When we were pre-processing the provided datasets, we also created their splits into training and validation part.
+        These splits, together with a brief description, are <a href="/hdc_dataset">publicly available</a>.
+    </p>
+{% endblock %}
