@@ -1,0 +1,51 @@
+{% extends 'template.html.en' %}
+
+{% block header %}
+  Historical document classification
+{% endblock %}
+
+{% block content %}
+<p>
+
+Within the <a href="https://lme.tf.fau.de/competitions/icdar-2021-competition-on-historical-document-classification/">ICDAR 2021 Competition on Historical Document Classification</a>, we created our own datasets splits.
+In the links below you will find the annotation files we used.
+Individual lines of every file contain annotations for a document (page) in the dataset.
+Each line starts with the name of the document and the following annotations are separated with spaces.
+In the case of dating, the annotations are in "not-before not-after" format, which defines the interval of years in which the document was created.
+In localization, the annotation for each document is the name of the place where the document originated.
+To determine the font and script, the main font/script is first annotated, followed by a list of others that appear in the document.
+
+<h3>Download links</h3>
+<p>
+    <ul>
+    <li>Font: <a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/hdc_2021/font.trn">font.trn</a> (2.1 MB), <a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/hdc_2021/font.val">font.val</a> (13 KB)</li>
+    <li>Script: <a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/hdc_2021/script.trn">script.trn</a> (232 KB), <a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/hdc_2021/script.val">script.val</a> (14 KB)</li>
+    <li>Location: <a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/hdc_2021/location.trn">location.trn</a> (250 KB), <a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/hdc_2021/location.val">location.val</a> (3.1 KB)</li>
+    <li>Date: <a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/hdc_2021/date.trn">date.trn</a> (325 KB), <a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/hdc_2021/date.val">date.val</a> (32 KB)</li>
+    </ul>
+</p>
+
+<h3>Examples of annotations</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">Annotation format</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Font & script</th>
+      <td><p class="bmod-intended-monospace">IRHT_P_001909.tif Semihybrida Textualis</p></td>
+    </tr>
+    <tr>
+      <th scope="row">Location</th>
+      <td><p class="bmod-intended-monospace">b27efa208a95f5da6b877bec7608e23a.jpg Fonteney</p></td>
+    </tr>
+    <tr>
+      <th scope="row">Date</th>
+      <td><p class="bmod-intended-monospace">3545_1100_1199.jpg 1100.0 1199.0</p></td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
