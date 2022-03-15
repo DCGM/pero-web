@@ -51,6 +51,7 @@ def not_found():
 def _docs():
     return redirect("/docs/", code=302)
 
+
 @app.route('/docs/', defaults={'filename': 'index.html'})
 @app.route('/docs/<path:filename>')
 def docs(filename):
@@ -97,6 +98,11 @@ def datasets():
 @app.route('/github')
 def github():
     return create_response("pages/github.html")
+
+
+@app.route('/hdc_dataset')
+def hdc_dataset():
+    return create_response("pages/hdc_dataset.html")
 
 
 @app.route('/brno_mobile_ocr_dataset', methods=['GET', 'POST'])
