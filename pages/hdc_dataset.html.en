@@ -9,11 +9,15 @@
 
 Within the <a href="https://lme.tf.fau.de/competitions/icdar-2021-competition-on-historical-document-classification/">ICDAR 2021 Competition on Historical Document Classification</a>, we created our own datasets splits.
 In the links below you will find the annotation files we used.
+The script (handwriting type) dataset provided for this competition consisted of two previously published datasets, for which we unified ground-truth.
+</p>
+<p>
 Individual lines of every file contain annotations for a document (page) in the dataset.
 Each line starts with the name of the document and the following annotations are separated with spaces.
 In the case of dating, the annotations are in "not-before not-after" format, which defines the interval of years in which the document was created.
 In localization, the annotation for each document is the name of the place where the document originated.
 To determine the font and script, the main font/script is first annotated, followed by a list of others that appear in the document.
+</p>
 
 <h3>Download links</h3>
 <p>

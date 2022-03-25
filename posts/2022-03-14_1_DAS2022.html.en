@@ -7,7 +7,7 @@
 {% block perex %}
     <p>
         At the end of May 2022, the <a href="https://das2022.univ-lr.fr/">15th International Workshop on Document Analysis System</a> (DAS) will take place in La Rochelle, France.
-        We will participate in this international workshop with a paper describing our system, which we have prepared within the <a href="https://lme.tf.fau.de/competitions/icdar-2021-competition-on-historical-document-classification/">ICDAR 2021 Competition on Historical Document Classification</a>.
+        We will participate in this international workshop with a paper describing our system, which we have prepared for the <a href="https://lme.tf.fau.de/competitions/icdar-2021-competition-on-historical-document-classification/">ICDAR 2021 Competition on Historical Document Classification</a>.
     </p>
 {% endblock %}
 

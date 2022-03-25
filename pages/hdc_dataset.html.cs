@@ -8,6 +8,9 @@
 <p>
     V rámci soutěže na klasifikaci historických dokumentů na ICDAR 2021 (<a href="https://lme.tf.fau.de/competitions/icdar-2021-competition-on-historical-document-classification/">ICDAR 2021 Competition on Historical Document Classification</a>) jsme vytvořili vlastní rozdělení datových sad.
     V odkazech níže naleznete anotační soubory, které jsme použili.
+    Dataset pro určování skriptu (typu ručně psaného písma), který byl pro tuto soutěž poskytnut, se skládal ze dvou dříve publikovaných datasetů, u kterých jsme sjednotili ground-truth.
+</p>
+<p>
     Každý soubor obsahuje na jednotlivých řádcích anotace vždy k jednomu dokumentu (stránce) v datové sadě.
     Na začátku každého řádku je nejprve název dané stránky a za první mezerou se nacházejí mezerami oddělené anotace.
     V případě datování jsou anotace ve formátu "ne-před ne-po", které určují interval let, ve kterých dokument vznikl.
