@@ -11,7 +11,7 @@
     <li>
 		<div class="publication">
             <div class="publication-text">
-				Kišš, M., Kohút, J., Beneš, K., and Hradiš, M. <span class="publication-emph">Importance of Textlines in Historical Document Classification</span>. Přijato na <i>2022 International Workshop on Document Analysis System (DAS)</i>.
+				Kišš, M., Kohút, J., Beneš, K., and Hradiš, M. <span class="publication-emph">Importance of Textlines in Historical Document Classification</span>. In: Uchida, S., Barney, E., Eglin, V. (eds) Document Analysis Systems. DAS 2022. Lecture Notes in Computer Science, vol 13237. Springer, Cham.</i>.
             </div>
             <div class="publication-additional-info">
                 <b>Další odkazy:</b>
