@@ -1,7 +1,7 @@
 {% extends 'template.html.en' %}
 
 {% block header %}
-  Publikace
+  Publications
 {% endblock %}
 
 {% block content %}
