@@ -7,6 +7,10 @@
 {% block content %}
 <p>V rámci projektu PERO vzniká několik datových sad, přičemž některé jsou již zveřejněny. Níže naleznete odkazy na zveřejněné datasety.</p>
 
+<h2><a href="/handwriting_adaptation_dataset">Handwriting Adaptation Dataset</a></h2>
+<p>Handwriting Adaptation Dataset (HAD).</p>
+<p></p>
+
 <h2><a href="/handwritten_dataset">Ručně psaný dataset</a></h2>
 <p>Prosíme, pomozte nám se sbíráním ručně psaných textů, abychom mohli vylepšit nástroje pro automatické přepisování historických dokumentů. <a href="/handwritten_dataset">Více</a></p>
 <p></p>

@@ -1,0 +1,19 @@
+{% extends 'template.html.en' %}
+
+{% block header %}
+  Handwriting Adaptation Dataset
+{% endblock %}
+
+{% block content %}
+<p>
+    Description TODO.
+</p>
+
+<h3>Download links</h3>
+<p>
+    <ul>
+    <li>Dataset: <a class="dotted-link" href="https://www.fit.vutbr.cz/~ikohut/handwriting_adaptation_dataset/handwriting_adaptation_dataset.zip">download</a></li>
+    </ul>
+</p>
+
+{% endblock %}

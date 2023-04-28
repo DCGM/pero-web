@@ -149,6 +149,11 @@ def get_handwritten_page():
     return helper.send_file(helper.get_random_file(path, extensions), as_attachment=True)
 
 
+@app.route('/handwriting_adaptation_dataset')
+def handwriting_adaptation_dataset():
+    return create_response("pages/handwriting_adaptation_dataset.html")
+
+
 @app.route('/handwritten_dataset', methods=['GET', 'POST'])
 def handwritten_dataset():
     language = get_language()
