@@ -5,15 +5,61 @@
 {% endblock %}
 
 {% block content %}
-<p>
-    Description TODO.
-</p>
 
-<h3>Download links</h3>
-<p>
-    <ul>
-    <li>Dataset: <a class="dotted-link" href="https://www.fit.vutbr.cz/~ikohut/handwriting_adaptation_dataset/handwriting_adaptation_dataset.zip">download</a></li>
-    </ul>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p>19 manuscripts in various European languages and scripts.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <a class="fancybox" data-fancybox="gallery" rel="ligthbox" href="/static/img/handwriting_adaptation_dataset/handwriting_adaptation_dataset.png" data-caption="&lt;h3&gt;A sample word for each manuscript from HAD.&lt;/h3&gt;">
+        <img class="img-fluid" alt="" src="/static/img/handwriting_adaptation_dataset/handwriting_adaptation_dataset.png"/>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      More information together with adaptation fine-tuning experiments of
+      a general model trained on a large handwriting dataset can be
+      found here: <a href=https://arxiv.org/abs/2302.06308 target="_blank">Finetuning Is a Surprisingly Effective
+      Domain Adaptation Baseline in Handwriting Recognition</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        &nbsp;
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      There are two directories in the dataset archive: <b>data</b> and <b>runs</b>.
+      <p>
+      <b>data</b> contains images of text lines and their
+      respective transcriptions. The images are in three multiple crop modes: tight, medium, and wide, the crop mode
+      indicates how much space was left around the baseline during the cropping process. Transcriptions are in the
+      following format: ID TRANS, where the ID corresponds to the name of the respective text line image and TRANS is
+      the transcription.
+      </p>
+      <p>
+      <b>runs</b> contains partitions for fine-tuning runs,
+      more information in referenced <a href=https://arxiv.org/abs/2302.06308 target="_blank">paper</a>, Section 5.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3>Download links</h3>
+        <p>
+          <ul>
+            <li>Dataset: <a class="dotted-link" href="https://www.fit.vutbr.cz/~ikohut/handwriting_adaptation_dataset/handwriting_adaptation_dataset.zip">download</a></li>
+          </ul>
+        </p>
+    </div>
+  </div>
+</div>
+
+
 
 {% endblock %}
