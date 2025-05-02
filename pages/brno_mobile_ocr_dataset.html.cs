@@ -27,7 +27,10 @@ Brno Mobile OCR Dataset
 </p>
 
 <h2>Ke stažení</h2>
-Dataset je dostupný na <a class="dotted-link" href="https://doi.org/10.5281/zenodo.15310981">Zenodo</a>.
+
+<p>
+    Dataset je dostupný na <a class="dotted-link" href="https://doi.org/10.5281/zenodo.15310981">Zenodo</a>.
+</p>
 
 <!--
 <p style="text-decoration: line-through;">
