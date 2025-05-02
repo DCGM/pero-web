@@ -52,9 +52,7 @@
     <div class="col">
       <h3>Odkazy ke stažení</h3>
         <p>
-          <ul>
-            <li>Dataset: <a class="dotted-link" href="https://www.fit.vutbr.cz/~ikohut/handwriting_adaptation_dataset/handwriting_adaptation_dataset.zip">stáhnout</a></li>
-          </ul>
+            Dataset je dostupný na <a class="dotted-link" href="https://doi.org/10.5281/zenodo.15309315">Zenodo</a>.
         </p>
     </div>
   </div>
