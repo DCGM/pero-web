@@ -27,7 +27,9 @@ Brno Mobile OCR Dataset
 </p>
 
 <h2>Ke stažení</h2>
-<p>
+Dataset je dostupný na <a class="dotted-link" href="https://doi.org/10.5281/zenodo.15310981">Zenodo</a>.
+
+<p style="text-decoration: line-through;">
     <ul>
         <li><a class="dotted-link" href="https://www.fit.vutbr.cz/~ikiss/b-mod/b-mod_templates.zip">Originální šablony</a> (1.45 GB)
         </li>
